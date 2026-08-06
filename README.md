@@ -9,7 +9,7 @@
 
 | Area | Description |
 |------|-------------|
-| **Multi-Page SPA** | React Router–driven architecture with 8 dedicated page components |
+| **Multi-Page SPA** | React Router-driven architecture with 8 dedicated page components |
 | **Admin Dashboard** | Authenticated CRUD for speakers, sponsors, events & team members |
 | **Drag & Drop** | Reorder cards (speakers, sponsors, schedule, team) via drag‑and‑drop |
 | **Cloud Image Storage** | Cloudinary-backed image uploads with drag‑and‑drop preview |
