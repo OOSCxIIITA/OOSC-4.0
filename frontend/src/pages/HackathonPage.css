@@ -1,0 +1,705 @@
+.hackathon-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 0;
+}
+
+
+.hackathon-hero {
+  /* Fill the remaining viewport below the sticky navbar */
+  min-height: 100vh;
+
+  /* Center content vertically */
+  display: flex;
+  align-items: center;
+
+  padding: 54px 24px 36px;
+
+  background: var(--color-bg);
+  
+  /* Make it full width */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  overflow: hidden;
+}
+
+
+.hackathon-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: url('/hackathon-bg.png') center/cover no-repeat;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.hackathon-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.hackathon-body h1,
+.hackathon-body h2,
+.hackathon-body h3,
+.hackathon-body h4,
+.hackathon-body h5,
+.hackathon-body h6 {
+  text-shadow: none !important;
+}
+
+.hackathon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--color-overlay-warm);
+  color: var(--color-label-red);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+
+.badge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-label-red);
+  display: inline-block;
+}
+
+.hackathon-hero h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2.2rem, 2.5vw, 3.2rem);
+  color: var(--color-text-snow);
+}
+
+.theme-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  color: var(--color-text-alt-warm);
+}
+
+.theme-name {
+  margin: 0 0 24px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-warning);
+  line-height: 1.2;
+}
+
+.hackathon-stat-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.hstat {
+  padding: 14px 16px;
+  border-radius: var(--radius-btn);
+  background: var(--color-panel);
+  border: 1px solid var(--color-card-border);
+  color: var(--color-text-cream);
+  transition: all 0.25s ease;
+}
+
+.hstat:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.hstat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.hstat-label {
+  color: var(--color-text-warm-muted);
+  font-size: 0.95rem;
+}
+
+.hk-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.hk-card {
+  padding: 28px;
+  border-radius: var(--radius-card);
+  background: var(--color-panel);
+  border: 1px solid var(--color-card-border);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.hk-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-brand);
+  opacity: 0.6;
+}
+
+.hk-card-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.hk-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background: var(--color-panel-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.problem-statement-text,
+.panel-subheading {
+  margin: 0 0 12px;
+  color: var(--color-heading-bright);
+  line-height: 1.75;
+}
+
+.hackathon-body .panel-subheading,
+.hackathon-body .panel-subheading.mt-section {
+  color: var(--color-heading-bright) !important;
+}
+
+.hk-card h3,
+.hk-card-title h3,
+.hackathon-cta-strip h3,
+.step-content h4,
+.date-label,
+.prize-position,
+.date-value,
+.hstat-value {
+  color: var(--color-heading-bright);
+}
+
+.hk-card p,
+.rule-item p,
+.eligibility-item p,
+.prize-card p,
+.hackathon-cta-strip p,
+.step-content p,
+.date-info p,
+.problem-statement-text {
+  color: var(--color-text-warm-muted);
+}
+
+.hk-card strong,
+.rule-item p strong,
+.eligibility-item p strong,
+.prize-card p strong,
+.step-content p strong,
+.date-info p strong,
+.hackathon-cta-strip p strong {
+  color: var(--color-heading-bright);
+}
+
+.rules-list,
+.eligibility-list,
+.special-prizes,
+.prizes-grid,
+.dates-timeline,
+.steps-list {
+  display: grid;
+  gap: 14px;
+}
+
+.hackathon-body .rule-item,
+.hackathon-body .eligibility-item,
+.hackathon-body .special-prize-pill,
+.hackathon-body .prize-card,
+.hackathon-body .date-item,
+.hackathon-body .step-item,
+.hackathon-body .hackathon-cta-strip {
+  padding: 16px;
+  border-radius: var(--radius-btn);
+  background: var(--color-panel-surface);
+  border: 1px solid var(--color-card-border);
+}
+
+.hackathon-body .rule-item p {
+  color: var(--color-text-warm-muted) !important;
+}
+
+.hackathon-body .rule-item p strong,
+.hackathon-body .eligibility-item p strong,
+.hackathon-body .prize-card p strong,
+.hackathon-body .step-content p strong,
+.hackathon-body .date-info p strong,
+.hackathon-body .hackathon-cta-strip p strong {
+  color: var(--color-heading-bright) !important;
+}
+
+.rule-num,
+.elig-check,
+.step-num {
+  font-weight: 700;
+  color: var(--color-label-red);
+  margin-right: 12px;
+}
+
+.pill-row,
+.special-prizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hackathon-body .special-prize-pill {
+  padding: 12px 14px;
+  background: var(--color-panel-surface);
+  color: var(--color-text-warm-muted) !important;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.hackathon-body .special-prize-pill span {
+  color: var(--color-text-warm-muted) !important;
+}
+
+/* ── Theme-Matched Flat & Clean Prize Grid ── */
+.prizes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  padding: 1rem 0;
+}
+
+.prize-card {
+  position: relative;
+  min-height: 250px;
+  background: var(--color-panel-surface); /* Solid dark panel */
+  border-radius: 16px;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--color-card-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.prize-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.prize-medal {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  /* border will be defined by color classes */
+  border: 2px solid;
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.prize-card:hover .prize-medal {
+  transform: scale(1.1);
+}
+
+.prize-position {
+  margin: 0 0 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
+.prize-amount {
+  margin: 0 0 16px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ── Prize Color Classes ── */
+/* 1st Place */
+.prize-card.gold {
+  background: var(--color-brand-blue); /* Bright theme color */
+  border-color: var(--color-brand-blue);
+  box-shadow: 0 10px 30px rgba(0, 162, 237, 0.2); /* Adjust shadow */
+}
+.prize-card.gold:hover {
+  box-shadow: 0 15px 40px rgba(0, 162, 237, 0.3);
+}
+.prize-card.gold .prize-medal {
+  border-color: #FFD700; /* Brighter gold */
+  color: #FFD700;
+}
+.prize-card.gold .prize-position,
+.prize-card.gold .prize-amount {
+  color: #FFD700 !important;
+  text-shadow: none;
+}
+.prize-card.gold p:not(.prize-position):not(.prize-amount) {
+  color: var(--color-bg) !important; /* Dark text for contrast against bright blue */
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* 2nd Place */
+.prize-card.silver {
+  background: var(--color-panel-surface);
+  border-color: var(--color-card-border);
+}
+.prize-card.silver:hover {
+  border-color: var(--color-card-hover-border);
+}
+.prize-card.silver .prize-medal {
+  border-color: var(--color-brand-slate);
+  color: var(--color-brand-slate);
+}
+.prize-card.silver .prize-position {
+  color: var(--color-brand-slate) !important;
+  text-shadow: none;
+}
+.prize-card.silver .prize-amount {
+  color: var(--color-text-snow) !important;
+  text-shadow: none;
+}
+.prize-card.silver p:not(.prize-position):not(.prize-amount) {
+  color: var(--color-text-warm-muted) !important;
+  font-size: 1rem;
+}
+
+/* 3rd Place */
+.prize-card.bronze {
+  background: var(--color-panel-surface);
+  border-color: var(--color-card-border);
+}
+.prize-card.bronze:hover {
+  border-color: var(--color-card-hover-border);
+}
+.prize-card.bronze .prize-medal {
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+.prize-card.bronze .prize-position {
+  color: var(--color-warning) !important;
+  text-shadow: none;
+}
+.prize-card.bronze .prize-amount {
+  color: var(--color-text-snow) !important;
+  text-shadow: none;
+}
+.prize-card.bronze p:not(.prize-position):not(.prize-amount) {
+  color: var(--color-text-warm-muted) !important;
+  font-size: 1rem;
+}
+
+.dates-timeline {
+  border-radius: var(--radius-card);
+  padding: 20px;
+}
+
+.date-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.date-dot-col {
+  display: flex;
+  align-items: center;
+}
+
+.date-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-text-on-panel-sub);
+}
+
+.date-dot.active {
+  background: var(--color-accent-soft);
+  box-shadow: 0 0 0 6px var(--color-shadow-accent-soft);
+}
+
+.date-info p {
+  margin: 0;
+}
+
+.date-label {
+  font-weight: 700;
+  color: var(--color-text-snow);
+}
+
+.date-value {
+  color: var(--color-text-warm-muted);
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.date-desc {
+  color: var(--color-text-warm-muted);
+}
+
+.step-item {
+  display: flex;
+  gap: 16px;
+}
+
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-panel-surface-soft);
+  color: var(--color-text-snow);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content h4 {
+  margin: 0 0 6px;
+  color: var(--color-text-snow);
+}
+
+.step-content p {
+  margin: 0;
+  color: var(--color-text-soft);
+  line-height: 1.7;
+}
+
+.hk-card p,
+.rule-item p,
+.eligibility-item p,
+.prize-card p,
+.hackathon-cta-strip p,
+.step-content p,
+.date-info p {
+  color: var(--color-text-warm-muted);
+}
+
+.hackathon-cta-strip {
+  padding: 24px;
+  border-radius: var(--radius-card);
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-accent);
+}
+
+.actions-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+
+  .hk-grid-2,
+  .hackathon-cta-strip {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .hackathon-hero {
+    padding: 36px 24px;
+    min-height: calc(100dvh - 80px);
+    align-items: flex-start;
+  }
+
+  .hackathon-cta-strip {
+    padding: 24px;
+    align-items: flex-start;
+  }
+
+  .hk-card {
+    padding: 20px;
+  }
+
+  .hackathon-stat-strip {
+    gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
+  }
+
+  .eligibility-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 580px) {
+  .hackathon-hero {
+    padding: 32px 16px;
+    min-height: calc(100dvh - 76px);
+  }
+
+  .hackathon-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.2;
+  }
+
+  .theme-label {
+    font-size: 0.85rem;
+  }
+
+  .theme-name {
+    font-size: 1.2rem;
+  }
+
+  .hackathon-hero h2 {
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+  }
+
+  .hackathon-hero p {
+    font-size: 0.9rem;
+  }
+
+  .hstat-value {
+    font-size: 1.1rem;
+  }
+
+  .hstat-label {
+    font-size: 0.85rem;
+  }
+
+  .hackathon-cta-strip {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .hk-card {
+    padding: 14px;
+  }
+
+  .hk-card h3 {
+    font-size: 1rem;
+  }
+
+  .problem-statement-text,
+  .panel-subheading,
+  .rule-item p,
+  .eligibility-item p,
+  .prize-card p,
+  .step-content p,
+  .date-info p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  .hackathon-stat-strip {
+    gap: 12px;
+    grid-template-columns: 1fr;
+  }
+
+  .actions-row {
+    gap: 8px;
+  }
+
+  .actions-row .btn {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hackathon-hero {
+    padding: 28px 12px;
+    min-height: calc(100dvh - 72px);
+  }
+
+  .hackathon-hero h1 {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .theme-label {
+    font-size: 0.8rem;
+  }
+
+  .theme-name {
+    font-size: 1.1rem;
+  }
+
+  .hackathon-hero h2 {
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+    line-height: 1.2;
+  }
+
+  .hackathon-hero p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .hstat-value {
+    font-size: 1rem;
+  }
+
+  .hstat-label {
+    font-size: 0.8rem;
+  }
+
+  .hackathon-cta-strip {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .hk-card {
+    padding: 12px;
+    font-size: 0.88rem;
+  }
+
+  .hk-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .problem-statement-text,
+  .panel-subheading,
+  .rule-item p,
+  .eligibility-item p,
+  .prize-card p,
+  .step-content p,
+  .date-info p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .date-label,
+  .date-value {
+    font-size: 0.9rem;
+  }
+}
+
+:root[data-theme="bright"] .hackathon-hero {
+  border: none;
+}

@@ -1,0 +1,109 @@
+/* ─── GOOGLE FONTS ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ─── BASE RESET ─────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-on-dark);
+  background-color: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-on-dark);
+  position: relative;
+}
+
+/* subtle dot-grid texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg);
+  background-image: black;
+  background-size: 8px 8px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 21px; height: 21px; }
+::-webkit-scrollbar-track  { background: var(--color-bg); }
+::-webkit-scrollbar-thumb  { background: var(--color-accent); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-hover); }
+html {
+  scrollbar-color: var(--color-accent) var(--color-bg);
+}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  color: inherit;
+  font-weight: 900 !important;
+  letter-spacing: -0.04em !important;
+  text-transform: uppercase !important;
+}
+
+h4 {
+  text-shadow: none !important;
+}
+
+label, .tag, .label, [class*="-tagline"], [class*="-label"] {
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+button, input, textarea, select { font: inherit; color: inherit; }
+
+strong {
+  font-weight: 700;
+  color: var(--color-page-heading);
+}
+
+em {
+  font-style: italic;
+  color: var(--color-page-copy-muted);
+}
+
+.text-bold {
+  font-weight: 700;
+  color: var(--color-page-accent);
+}
+
+.text-italic {
+  font-style: italic;
+  color: var(--color-page-copy-muted);
+}
+
+a { color: inherit; text-decoration: none; transition: color 0.15s ease; }
+
+img { display: block; max-width: 100%; height: auto; }
+
+/* ─── SELECTION ──────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-selection-bg);
+  color: var(--color-text-on-dark);
+}

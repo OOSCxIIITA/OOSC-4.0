@@ -1,0 +1,239 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Speaker {
+  id           Int      @id @default(autoincrement())
+  name         String
+  title        String
+  bio          String   @db.Text
+  photoURL     String?
+  sortOrder    Int      @default(0)
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  email        String?
+  github       String?
+  linkedin     String?
+  organization String?
+  twitter      String?
+  website      String?
+
+  @@index([published])
+  @@index([sortOrder])
+}
+
+model Sponsor {
+  id          Int      @id @default(autoincrement())
+  name        String
+  logoURL     String?
+  category    String
+  website     String?
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  description String?  @db.Text
+
+  @@index([published])
+  @@index([sortOrder])
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @db.Text
+  date        String
+  time        String
+  type        String
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  endTime     String?
+  speaker     String?
+  startTime   String?
+  track       String?
+  venue       String?
+  link        String?
+
+  @@index([published])
+  @@index([sortOrder])
+}
+
+model TeamMember {
+  id         Int      @id @default(autoincrement())
+  name       String
+  role       String
+  contact    String
+  photoURL   String?
+  sortOrder  Int      @default(0)
+  published  Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  department String?
+  email      String?
+  github     String?
+  instagram  String?
+  linkedin   String?
+  twitter    String?
+  website    String?
+
+  @@index([published])
+  @@index([sortOrder])
+}
+
+model Lead {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  affiliation String?
+  message     String?  @db.Text
+  createdAt   DateTime @default(now())
+}
+
+model AuditLog {
+  id         Int      @id @default(autoincrement())
+  adminEmail String
+  action     String
+  resource   String
+  ipAddress  String
+  createdAt  DateTime @default(now())
+}
+
+model SiteConfig {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model MediaAsset {
+  id        Int      @id @default(autoincrement())
+  url       String
+  filename  String
+  category  String   @default("General")
+  createdAt DateTime @default(now())
+}
+
+model Setting {
+  key   String @id
+  value String
+}
+
+model AdminWhitelist {
+  email     String   @id
+  addedBy   String?
+  createdAt DateTime @default(now())
+}
+
+model RegistrationCard {
+  id          Int      @id @default(autoincrement())
+  title       String
+  price       String
+  description String   @db.Text
+  features    String   @db.Text
+  icon        String?
+  type        String?  @default("normal")
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published])
+  @@index([sortOrder])
+}
+
+model InfoCard {
+  id          Int      @id @default(autoincrement())
+  title       String
+  content     String   @db.Text
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published])
+  @@index([sortOrder])
+}
+
+model HackathonTrack {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @db.Text
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}
+
+model HackathonEligibility {
+  id          Int      @id @default(autoincrement())
+  content     String   @db.Text
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}
+
+model HackathonTeamComp {
+  id          Int      @id @default(autoincrement())
+  icon        String
+  label       String
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}
+
+model HackathonPrize {
+  id          Int      @id @default(autoincrement())
+  position    String
+  amount      String
+  description String   @db.Text
+  colorClass  String   @default("gold")
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}
+
+model HackathonSpecialPrize {
+  id          Int      @id @default(autoincrement())
+  icon        String
+  label       String
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}
+
+model HackathonRule {
+  id          Int      @id @default(autoincrement())
+  content     String   @db.Text
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}
+
+model HackathonTimeline {
+  id          Int      @id @default(autoincrement())
+  label       String
+  value       String
+  description String   @db.Text
+  status      String   @default("")
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}
+
+model HackathonStep {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String   @db.Text
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+}

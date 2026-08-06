@@ -1,0 +1,226 @@
+import React, { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
+import { Mic, Star, ArrowRight, Clock, RotateCcw } from 'lucide-react'
+import './SpeakersPage.css'
+
+// Default proposal submission deadline: 14 Aug 2026, 11:59:59 PM IST
+const DEFAULT_DEADLINE = new Date('2026-08-14T23:59:59+05:30')
+
+export default function SpeakersPage({
+  siteConfig, adminMode, speakers,
+  draggedResource, draggedIndex, dragOverIndex,
+  handleDragStart, handleDragOver, handleDragEnd, handleDrop,
+  openModal, editRecord, deleteRecord, setSpeakers
+}) {
+  const [targetDate, setTargetDate] = useState(DEFAULT_DEADLINE)
+
+  const getTimeRemaining = (target) => {
+    const total = Math.max(0, Math.floor((target.getTime() - new Date().getTime()) / 1000))
+    return {
+      total,
+      days: Math.floor(total / (3600 * 24)),
+      hours: Math.floor((total % (3600 * 24)) / 3600),
+      minutes: Math.floor((total % 3600) / 60),
+      seconds: total % 60
+    }
+  }
+
+  const [timeLeft, setTimeLeft] = useState(() => getTimeRemaining(DEFAULT_DEADLINE))
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeRemaining(targetDate))
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [targetDate])
+
+  const handleResetTimer = () => {
+    setTargetDate(DEFAULT_DEADLINE)
+    setTimeLeft(getTimeRemaining(DEFAULT_DEADLINE))
+  }
+
+  // Dynamic theme based on remaining days
+  let timerThemeClass = 'timer-theme-default'
+  if (timeLeft.total <= 0) {
+    timerThemeClass = 'timer-theme-expired'
+  } else if (timeLeft.days <= 2) {
+    timerThemeClass = 'timer-theme-orange'
+  } else if (timeLeft.days <= 5) {
+    timerThemeClass = 'timer-theme-yellow'
+  }
+
+  return (
+    <section className="content-section speakers-section" id="speakers">
+      <Helmet>
+        <title>Speakers — OOSC 4.0 | IIIT Allahabad</title>
+        <meta name="description" content="Meet the industry experts, leading open-source maintainers, and researchers speaking at OOSC 4.0 at IIIT Allahabad, Aug 28–30, 2026." />
+        <meta name="keywords" content="OOSC 4.0 speakers, open source experts, keynote speakers, tech talks, IIIT Allahabad, conference speakers" />
+        <link rel="canonical" href="https://oosc.iiita.ac.in/speakers" />
+        <meta property="og:title" content="Speakers — OOSC 4.0 | IIIT Allahabad" />
+        <meta property="og:description" content="Meet the industry experts, leading open-source maintainers, and researchers speaking at OOSC 4.0 at IIIT Allahabad." />
+        <meta property="og:url" content="https://oosc.iiita.ac.in/speakers" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
+        <meta property="og:image:alt" content="OOSC 4.0 Speakers" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Speakers — OOSC 4.0 | IIIT Allahabad" />
+        <meta name="twitter:description" content="Meet the industry experts and researchers speaking at OOSC 4.0 at IIIT Allahabad." />
+        <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
+        <meta name="twitter:image:alt" content="OOSC 4.0 Speakers" />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ItemList",
+              "itemListElement": ${JSON.stringify(speakers.map((speaker, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+              "@type": "Person",
+              "name": speaker.name,
+              "jobTitle": speaker.title || undefined,
+              "description": speaker.bio || undefined,
+              "image": speaker.photoURL || undefined,
+              "sameAs": [speaker.linkedin, speaker.github].filter(Boolean)
+            }
+          })))}
+            }
+          `}
+        </script>
+      </Helmet>
+      <div className="section-heading split">
+        <div>
+          <span>{siteConfig.speakersEyebrow || 'Experts'}</span>
+          <h1>{siteConfig.speakersTitle || 'Thought Leadership'}</h1>
+          <p>{siteConfig.speakersSubtitle || 'Featured technology leaders, academics, and research engineers guiding our tracks.'}</p>
+        </div>
+        {adminMode && (
+          <button type="button" className="btn btn-admin-add" onClick={() => openModal('speakers', 'create')}>
+            + Add Speaker
+          </button>
+        )}
+      </div>
+
+      <div className="speaker-cta-banner glass-card">
+        <div className="cta-content">
+          <h3>{siteConfig.speakersCtaTitle || 'Want to share your expertise?'}</h3>
+          <p>{siteConfig.speakersCtaDesc || "We're always looking for passionate speakers to lead sessions, workshops, and panels."}</p>
+        </div>
+        <a href={siteConfig.speakersCtaLink || "https://events.canonical.com/event/154/abstracts/"} target="_blank" rel="noopener noreferrer" className="btn btn-primary cta-btn">
+          Submit Proposal <ArrowRight size={18} />
+        </a>
+      </div>
+
+      {/* ── Live Proposal Countdown Timer (Centered below banner) ── */}
+      <div className={`speaker-timer-box ${timerThemeClass}`}>
+        <div className="timer-header">
+          <span className="timer-title">
+            <Clock size={16} /> Submission Deadline: 14 Aug, 11:59 PM
+          </span>
+          {adminMode && (
+            <button
+              type="button"
+              className="timer-reset-btn"
+              onClick={handleResetTimer}
+              title="Reset timer to default 14 Aug deadline"
+            >
+              <RotateCcw size={13} /> Reset
+            </button>
+          )}
+        </div>
+
+        {timeLeft.total > 0 ? (
+          <div className="timer-digits-row">
+            <div className="digit-block">
+              <span className="digit-val">{String(timeLeft.days).padStart(2, '0')}</span>
+              <span className="digit-label">Days</span>
+            </div>
+            <span className="digit-colon">:</span>
+            <div className="digit-block">
+              <span className="digit-val">{String(timeLeft.hours).padStart(2, '0')}</span>
+              <span className="digit-label">Hours</span>
+            </div>
+            <span className="digit-colon">:</span>
+            <div className="digit-block">
+              <span className="digit-val">{String(timeLeft.minutes).padStart(2, '0')}</span>
+              <span className="digit-label">Mins</span>
+            </div>
+            <span className="digit-colon">:</span>
+            <div className="digit-block">
+              <span className="digit-val">{String(timeLeft.seconds).padStart(2, '0')}</span>
+              <span className="digit-label">Secs</span>
+            </div>
+          </div>
+        ) : (
+          <p className="timer-expired-text">Proposal submission deadline has passed.</p>
+        )}
+      </div>
+
+      <div className="card-grid speaker-grid">
+        {speakers.map((speaker, index) => (
+          <article
+            key={speaker.id}
+            draggable={adminMode}
+            className={`card speaker-card glass-card ${adminMode ? 'admin-draggable' : ''} ${draggedResource === 'speakers' && draggedIndex === index ? 'dragging' : ''} ${draggedResource === 'speakers' && dragOverIndex === index ? 'drag-over' : ''}`.trim()}
+            onDragStart={(e) => handleDragStart(e, 'speakers', index)}
+            onDragOver={(e) => handleDragOver(e, 'speakers', index)}
+            onDragEnd={handleDragEnd}
+            onDrop={(e) => handleDrop(e, 'speakers', index)}
+          >
+            <div className="image-wrapper">
+              <img
+                src={speaker.photoURL || ''}
+                alt={speaker.name}
+                loading="lazy"
+                onError={(e) => {
+                  e.currentTarget.onerror = null
+                  e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e293b'/%3E%3Ccircle cx='50' cy='38' r='20' fill='%2338bdf8' opacity='0.5'/%3E%3Cellipse cx='50' cy='85' rx='32' ry='22' fill='%2338bdf8' opacity='0.3'/%3E%3C/svg%3E"
+                }}
+              />
+            </div>
+            <div className="card-content">
+              <h3>{speaker.name}</h3>
+              {speaker.title ? <p className="card-subtitle">{speaker.title}</p> : null}
+              {speaker.bio ? <p className="card-description">{speaker.bio}</p> : null}
+              {(speaker.linkedin || speaker.github) && (
+                <div className="social-links">
+                  {speaker.linkedin && (
+                    <a href={speaker.linkedin} target="_blank" rel="noreferrer" className="social-icon" aria-label="LinkedIn">
+                      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                    </a>
+                  )}
+                  {speaker.github && (
+                    <a href={speaker.github} target="_blank" rel="noreferrer" className="social-icon" aria-label="GitHub">
+                      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg>
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+            {adminMode && (
+              <div className="admin-card-controls admin-card-actions">
+                <button type="button" className="btn btn-admin-mini" onClick={() => editRecord('speakers', speaker)}>Edit</button>
+                <button type="button" className="btn-delete" onClick={() => deleteRecord('speakers', speaker.id, setSpeakers)}>Delete</button>
+              </div>
+            )}
+            {adminMode && (
+              <span className="drag-hint" aria-hidden="true">✥ Drag to Reorder</span>
+            )}
+          </article>
+        ))}
+      </div>
+
+      {adminMode && (
+        <div className="admin-bottom-add-container" style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
+          <button
+            type="button"
+            className="btn btn-admin-add"
+            onClick={() => openModal('speakers', 'create')}
+          >
+            + Add Speaker
+          </button>
+        </div>
+      )}
+    </section>
+  )
+}
