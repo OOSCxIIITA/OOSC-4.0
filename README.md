@@ -1,4 +1,4 @@
-# OOSC 4.0 — Open Source Systems Conference
+# OOSC 4.0 - Open Source Systems Conference
 
 > **Full-stack conference management platform for OOSC 4.0 at IIIT Allahabad**
 > Built with React + Vite · Express.js + Prisma · MySQL (Aiven) · Cloudinary
@@ -23,19 +23,19 @@
 ## 📋 Tech Stack
 
 ### Frontend
-- **React 19** — UI framework
-- **React Router DOM** — Client-side routing
-- **Vite 8** — Build tool & dev server
-- **Vanilla CSS** — Custom design system with CSS variables
+- **React 19** - UI framework
+- **React Router DOM** - Client-side routing
+- **Vite 8** - Build tool & dev server
+- **Vanilla CSS** - Custom design system with CSS variables
 
 ### Backend
-- **Express.js** — REST API server
-- **Prisma 5** — Type-safe ORM
-- **MySQL (Aiven)** — Cloud-hosted relational database
-- **Cloudinary** — Image storage & CDN
-- **Nodemailer** — Email delivery
-- **bcrypt + JWT** — Authentication & password hashing
-- **Helmet + CORS + Rate Limiting** — Security middleware
+- **Express.js** - REST API server
+- **Prisma 5** - Type-safe ORM
+- **MySQL (Aiven)** - Cloud-hosted relational database
+- **Cloudinary** - Image storage & CDN
+- **Nodemailer** - Email delivery
+- **bcrypt + JWT** - Authentication & password hashing
+- **Helmet + CORS + Rate Limiting** - Security middleware
 
 ---
 
@@ -102,14 +102,14 @@ cd ..
 
 ### 4. Run Locally
 
-**Terminal 1 — Backend:**
+**Terminal 1 - Backend:**
 ```bash
 cd backend
 npm start
 ```
 → API server starts on **http://localhost:4000**
 
-**Terminal 2 — Frontend:**
+**Terminal 2 - Frontend:**
 ```bash
 cd frontend
 npm run dev
@@ -134,7 +134,7 @@ Creates optimized output in `frontend/dist/`.
 OOSC4.0IIITA/
 ├── frontend/
 │   └── src/
-│       ├── App.jsx                # Root component — layout, state, routes
+│       ├── App.jsx                # Root component - layout, state, routes
 │       ├── App.css                # Global design system & styles
 │       ├── main.jsx               # Entry point with BrowserRouter
 │       ├── data.js                # Static fallback data
@@ -191,7 +191,7 @@ OOSC4.0IIITA/
 | `POST` | `/admin/refresh` | Refresh JWT token |
 | `GET` | `/admin/me` | Get current admin session |
 
-### Resources (Protected — require admin JWT)
+### Resources (Protected - require admin JWT)
 | Resource | GET (list) | POST (create) | PUT (update) | DELETE |
 |----------|-----------|---------------|-------------|--------|
 | Speakers | `/api/speakers` | `/api/speakers` | `/api/speakers/:id` | `/api/speakers/:id` |

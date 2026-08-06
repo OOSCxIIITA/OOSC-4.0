@@ -10,19 +10,19 @@ export default function AboutPage({ siteConfig = {}, about = {} }) {
   return (
     <div className="about-page-container">
       <Helmet>
-        <title>About — OOSC 4.0 | IIIT Allahabad</title>
-        <meta name="description" content="Learn about OOSC 4.0 — the Opportunity Open Source Conference at IIIT Allahabad, Aug 28–30, 2026. Discover our history, host city Prayagraj, past keynote speakers, and what to expect." />
+        <title>About - OOSC 4.0 | IIIT Allahabad</title>
+        <meta name="description" content="Learn about OOSC 4.0 - the Opportunity Open Source Conference at IIIT Allahabad, Aug 28–30, 2026. Discover our history, host city Prayagraj, past keynote speakers, and what to expect." />
         <meta name="keywords" content="OOSC 4.0, about, Opportunity Open Source Conference, IIIT Allahabad, Prayagraj, open source history, keynote speakers, conference overview" />
         <link rel="canonical" href="https://oosc.iiita.ac.in/about" />
-        <meta property="og:title" content="About — OOSC 4.0 | IIIT Allahabad" />
-        <meta property="og:description" content="Learn about OOSC 4.0 — the Opportunity Open Source Conference at IIIT Allahabad. Discover our history, host city, past speakers, and what to expect." />
+        <meta property="og:title" content="About - OOSC 4.0 | IIIT Allahabad" />
+        <meta property="og:description" content="Learn about OOSC 4.0 - the Opportunity Open Source Conference at IIIT Allahabad. Discover our history, host city, past speakers, and what to expect." />
         <meta property="og:url" content="https://oosc.iiita.ac.in/about" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta property="og:image:alt" content="OOSC 4.0 About" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About — OOSC 4.0 | IIIT Allahabad" />
-        <meta name="twitter:description" content="Learn about OOSC 4.0 — the Opportunity Open Source Conference at IIIT Allahabad. Discover our history, host city, and past speakers." />
+        <meta name="twitter:title" content="About - OOSC 4.0 | IIIT Allahabad" />
+        <meta name="twitter:description" content="Learn about OOSC 4.0 - the Opportunity Open Source Conference at IIIT Allahabad. Discover our history, host city, and past speakers." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 About" />
         <script type="application/ld+json">
@@ -34,8 +34,8 @@ export default function AboutPage({ siteConfig = {}, about = {} }) {
                 "@type": "WebPage",
                 "@id": "https://oosc.iiita.ac.in/about"
               },
-              "name": "About — OOSC 4.0 | IIIT Allahabad",
-              "description": "Learn about OOSC 4.0 — the Opportunity Open Source Conference at IIIT Allahabad, Aug 28–30, 2026. Discover our history, host city Prayagraj, past keynote speakers, and what to expect.",
+              "name": "About - OOSC 4.0 | IIIT Allahabad",
+              "description": "Learn about OOSC 4.0 - the Opportunity Open Source Conference at IIIT Allahabad, Aug 28–30, 2026. Discover our history, host city Prayagraj, past keynote speakers, and what to expect.",
               "publisher": {
                 "@type": "Organization",
                 "name": "OOSC IIITA Team",
@@ -248,7 +248,7 @@ export default function AboutPage({ siteConfig = {}, about = {} }) {
         </div>
       </section>
 
-      {/* ─── SECTION: IIIT ALLAHABAD — THE HOST INSTITUTE ────────────────────────── */}
+      {/* ─── SECTION: IIIT ALLAHABAD - THE HOST INSTITUTE ────────────────────────── */}
       <section className="about-institute-section" id="host-institute">
         <div className="about-eyebrow" style={{ marginTop: '1.5rem' }}>The Host Institute</div>
         <h2 className="about-section-title">IIIT Allahabad</h2>
@@ -264,7 +264,7 @@ export default function AboutPage({ siteConfig = {}, about = {} }) {
             </p>
             <p className="about-section-desc">
               With a legacy of nurturing some of India's finest technologists, IIITA is the natural home
-              for OOSC 4.0 — a place where open-source philosophy is not just taught but actively lived
+              for OOSC 4.0 - a place where open-source philosophy is not just taught but actively lived
               through initiatives like OpenCode, numerous hackathons, and a thriving developer community.
             </p>
           </div>
@@ -331,10 +331,10 @@ export default function AboutPage({ siteConfig = {}, about = {} }) {
         </div>
       </section>
 
-      {/* ─── SECTION: GDG ON CAMPUS — IIIT ALLAHABAD ─────────────────────────────── */}
+      {/* ─── SECTION: GDG ON CAMPUS - IIIT ALLAHABAD ─────────────────────────────── */}
       <section className="about-gdg-section" id="gdg-iiita">
         <div className="about-eyebrow" style={{ marginTop: '1.5rem' }}>Community Partner</div>
-        <h2 className="about-section-title">GDG On Campus — IIIT Allahabad</h2>
+        <h2 className="about-section-title">GDG On Campus - IIIT Allahabad</h2>
 
         <div className="about-gdg-intro">
           <div className="about-gdg-logo-showcase">
@@ -481,7 +481,7 @@ export default function AboutPage({ siteConfig = {}, about = {} }) {
         <div className="about-stats-grid">
           <article className="about-stat-card">
             <div className="stat-value">10,000+</div>
-            <div className="stat-label">Registrations — Aproksha</div>
+            <div className="stat-label">Registrations - Aproksha</div>
           </article>
           <article className="about-stat-card">
             <div className="stat-value">130+</div>
@@ -517,7 +517,7 @@ export default function AboutPage({ siteConfig = {}, about = {} }) {
         <p className="about-section-desc">
           OOSC has been privileged to host distinguished voices from the open-source ecosystem. The previous
           editions featured <strong>100+ keynote speakers and panelists</strong> who are pioneers in their
-          domains—ranging from foundational software development to open governance, security, and
+          domains-ranging from foundational software development to open governance, security, and
           cloud-native infrastructure.
         </p>
 

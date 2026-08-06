@@ -12,17 +12,17 @@ export default function TeamPage({
   return (
     <section className="content-section" id="team">
       <Helmet>
-        <title>Team — OOSC 4.0 | IIIT Allahabad</title>
-        <meta name="description" content="Meet the organizing team behind OOSC 4.0 at IIIT Allahabad — faculty coordinators, student committees, and volunteers making the conference happen." />
+        <title>Team - OOSC 4.0 | IIIT Allahabad</title>
+        <meta name="description" content="Meet the organizing team behind OOSC 4.0 at IIIT Allahabad - faculty coordinators, student committees, and volunteers making the conference happen." />
         <link rel="canonical" href="https://oosc.iiita.ac.in/team" />
-        <meta property="og:title" content="Team — OOSC 4.0 | IIIT Allahabad" />
-        <meta property="og:description" content="Meet the organizing team behind OOSC 4.0 at IIIT Allahabad — faculty coordinators, student committees, and volunteers." />
+        <meta property="og:title" content="Team - OOSC 4.0 | IIIT Allahabad" />
+        <meta property="og:description" content="Meet the organizing team behind OOSC 4.0 at IIIT Allahabad - faculty coordinators, student committees, and volunteers." />
         <meta property="og:url" content="https://oosc.iiita.ac.in/team" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta property="og:image:alt" content="OOSC 4.0 Team" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Team — OOSC 4.0 | IIIT Allahabad" />
+        <meta name="twitter:title" content="Team - OOSC 4.0 | IIIT Allahabad" />
         <meta name="twitter:description" content="Meet the organizing team behind OOSC 4.0 at IIIT Allahabad." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 Team" />

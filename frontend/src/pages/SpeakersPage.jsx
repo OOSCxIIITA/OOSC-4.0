@@ -52,18 +52,18 @@ export default function SpeakersPage({
   return (
     <section className="content-section speakers-section" id="speakers">
       <Helmet>
-        <title>Speakers — OOSC 4.0 | IIIT Allahabad</title>
+        <title>Speakers - OOSC 4.0 | IIIT Allahabad</title>
         <meta name="description" content="Meet the industry experts, leading open-source maintainers, and researchers speaking at OOSC 4.0 at IIIT Allahabad, Aug 28–30, 2026." />
         <meta name="keywords" content="OOSC 4.0 speakers, open source experts, keynote speakers, tech talks, IIIT Allahabad, conference speakers" />
         <link rel="canonical" href="https://oosc.iiita.ac.in/speakers" />
-        <meta property="og:title" content="Speakers — OOSC 4.0 | IIIT Allahabad" />
+        <meta property="og:title" content="Speakers - OOSC 4.0 | IIIT Allahabad" />
         <meta property="og:description" content="Meet the industry experts, leading open-source maintainers, and researchers speaking at OOSC 4.0 at IIIT Allahabad." />
         <meta property="og:url" content="https://oosc.iiita.ac.in/speakers" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta property="og:image:alt" content="OOSC 4.0 Speakers" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Speakers — OOSC 4.0 | IIIT Allahabad" />
+        <meta name="twitter:title" content="Speakers - OOSC 4.0 | IIIT Allahabad" />
         <meta name="twitter:description" content="Meet the industry experts and researchers speaking at OOSC 4.0 at IIIT Allahabad." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 Speakers" />

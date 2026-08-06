@@ -12,18 +12,18 @@ export default function SchedulePage({
   return (
     <section className="content-section" id="schedule">
       <Helmet>
-        <title>Schedule — OOSC 4.0 | IIIT Allahabad</title>
+        <title>Schedule - OOSC 4.0 | IIIT Allahabad</title>
         <meta name="description" content="View the full 3-day schedule for OOSC 4.0 at IIIT Allahabad, Aug 28–30, 2026. Keynote talks, workshops, panel discussions, and hackathon events." />
         <meta name="keywords" content="OOSC 4.0 schedule, conference agenda, keynote schedule, workshop timetable, IIIT Allahabad, hackathon schedule" />
         <link rel="canonical" href="https://oosc.iiita.ac.in/schedule" />
-        <meta property="og:title" content="Schedule — OOSC 4.0 | IIIT Allahabad" />
+        <meta property="og:title" content="Schedule - OOSC 4.0 | IIIT Allahabad" />
         <meta property="og:description" content="View the full 3-day schedule for OOSC 4.0. Keynote talks, workshops, panel discussions, and hackathon events." />
         <meta property="og:url" content="https://oosc.iiita.ac.in/schedule" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta property="og:image:alt" content="OOSC 4.0 Schedule" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Schedule — OOSC 4.0 | IIIT Allahabad" />
+        <meta name="twitter:title" content="Schedule - OOSC 4.0 | IIIT Allahabad" />
         <meta name="twitter:description" content="View the full 3-day schedule for OOSC 4.0 at IIIT Allahabad." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 Schedule" />
@@ -33,7 +33,7 @@ export default function SchedulePage({
               "@context": "https://schema.org",
               "@type": "Event",
               "name": "OOSC 4.0 Conference Schedule",
-              "description": "Full 3-day schedule for OOSC 4.0 — keynote talks, workshops, panel discussions, and hackathon events at IIIT Allahabad.",
+              "description": "Full 3-day schedule for OOSC 4.0 - keynote talks, workshops, panel discussions, and hackathon events at IIIT Allahabad.",
               "url": "https://oosc.iiita.ac.in/schedule",
               "startDate": "2026-08-28T09:00:00+05:30",
               "endDate": "2026-08-30T21:00:00+05:30",

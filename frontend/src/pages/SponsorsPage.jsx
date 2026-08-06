@@ -41,17 +41,17 @@ export default function SponsorsPage({
   return (
     <section className="content-section" id="sponsors">
       <Helmet>
-        <title>Sponsors — OOSC 4.0 | IIIT Allahabad</title>
+        <title>Sponsors - OOSC 4.0 | IIIT Allahabad</title>
         <meta name="description" content="View the organizations and companies sponsoring OOSC 4.0 at IIIT Allahabad. Explore sponsorship tiers and become a partner of India's leading open-source conference." />
         <link rel="canonical" href="https://oosc.iiita.ac.in/sponsors" />
-        <meta property="og:title" content="Sponsors — OOSC 4.0 | IIIT Allahabad" />
+        <meta property="og:title" content="Sponsors - OOSC 4.0 | IIIT Allahabad" />
         <meta property="og:description" content="View the organizations sponsoring OOSC 4.0. Explore sponsorship tiers and become a partner of India's leading open-source conference." />
         <meta property="og:url" content="https://oosc.iiita.ac.in/sponsors" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta property="og:image:alt" content="OOSC 4.0 Sponsors" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sponsors — OOSC 4.0 | IIIT Allahabad" />
+        <meta name="twitter:title" content="Sponsors - OOSC 4.0 | IIIT Allahabad" />
         <meta name="twitter:description" content="View the organizations sponsoring OOSC 4.0 and explore sponsorship tiers." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 Sponsors" />
@@ -116,7 +116,7 @@ export default function SponsorsPage({
                       draggable={false}
                     >
                       <div className="logo-container">
-                        <img src={sponsor.logoURL} alt={`${sponsor.name} — OOSC 4.0 sponsor logo`} width="200" height="100" loading="lazy" draggable={false} />
+                        <img src={sponsor.logoURL} alt={`${sponsor.name} - OOSC 4.0 sponsor logo`} width="200" height="100" loading="lazy" draggable={false} />
                       </div>
                       <span className="sponsor-name">{sponsor.name}</span>
                     </a>
@@ -144,7 +144,7 @@ export default function SponsorsPage({
         <div className="prospectus-intro">
           <h3 className="prospectus-heading">Sponsorship Opportunities</h3>
           <p className="prospectus-desc">
-            By sponsoring OOSC 4.0, your brand becomes an integral part of this massive milestone event. Your support directly funds the ecosystem—covering the travel and accommodation of global speakers, powering the hackathon infrastructure, and providing an unforgettable experience for attendees.
+            By sponsoring OOSC 4.0, your brand becomes an integral part of this massive milestone event. Your support directly funds the ecosystem-covering the travel and accommodation of global speakers, powering the hackathon infrastructure, and providing an unforgettable experience for attendees.
           </p>
         </div>
 
@@ -390,16 +390,16 @@ export default function SponsorsPage({
             {/* Sponsor Logos Grid */}
             <div className="sponsor-logos-grid">
               <a href="https://www.trumio.ai" target="_blank" rel="noopener noreferrer" className="sponsor-logo-wrapper">
-                <img src="/Trumio-Logo.png" alt="Trumio — OOSC past sponsor logo" width="200" height="100" loading="lazy" />
+                <img src="/Trumio-Logo.png" alt="Trumio - OOSC past sponsor logo" width="200" height="100" loading="lazy" />
               </a>
               <a href="https://openprinting.github.io" target="_blank" rel="noopener noreferrer" className="sponsor-logo-wrapper">
-                <img src="/Open-printing-Logo.png" alt="Open Printing — OOSC past sponsor logo" width="200" height="100" loading="lazy" />
+                <img src="/Open-printing-Logo.png" alt="Open Printing - OOSC past sponsor logo" width="200" height="100" loading="lazy" />
               </a>
               <a href="https://www.qualcomm.com" target="_blank" rel="noopener noreferrer" className="sponsor-logo-wrapper">
-                <img src="/Qualcomm-Logo.png" alt="Qualcomm — OOSC past sponsor logo" width="200" height="100" loading="lazy" />
+                <img src="/Qualcomm-Logo.png" alt="Qualcomm - OOSC past sponsor logo" width="200" height="100" loading="lazy" />
               </a>
               <a href="https://snapcraft.io" target="_blank" rel="noopener noreferrer" className="sponsor-logo-wrapper">
-                <img src="/Snapcraft-Logo.png" alt="Snapcraft — OOSC past sponsor logo" width="200" height="100" loading="lazy" />
+                <img src="/Snapcraft-Logo.png" alt="Snapcraft - OOSC past sponsor logo" width="200" height="100" loading="lazy" />
               </a>
 
             </div>

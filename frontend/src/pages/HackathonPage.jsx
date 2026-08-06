@@ -37,18 +37,18 @@ export default function HackathonPage({
   return (
     <div className="hackathon-body" id="hackathon">
       <Helmet>
-        <title>Hackathon — OOSC 4.0 | IIIT Allahabad</title>
+        <title>Hackathon - OOSC 4.0 | IIIT Allahabad</title>
         <meta name="description" content="Participate in the OOSC 4.0 Hackathon at IIIT Allahabad, Aug 28–30, 2026. Build the future of open-source systems, compete for ₹1,00,000+ in prizes, and showcase your projects." />
         <meta name="keywords" content="OOSC 4.0 hackathon, open source hackathon, IIIT Allahabad hackathon, coding competition, prizes, open source projects, Prayagraj" />
         <link rel="canonical" href="https://oosc.iiita.ac.in/hackathon" />
-        <meta property="og:title" content="Hackathon — OOSC 4.0 | IIIT Allahabad" />
+        <meta property="og:title" content="Hackathon - OOSC 4.0 | IIIT Allahabad" />
         <meta property="og:description" content="Participate in the OOSC 4.0 Hackathon. Build the future of open-source systems, compete for ₹1,00,000+ in prizes, and showcase your projects." />
         <meta property="og:url" content="https://oosc.iiita.ac.in/hackathon" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta property="og:image:alt" content="OOSC 4.0 Hackathon" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Hackathon — OOSC 4.0 | IIIT Allahabad" />
+        <meta name="twitter:title" content="Hackathon - OOSC 4.0 | IIIT Allahabad" />
         <meta name="twitter:description" content="Join the OOSC 4.0 Hackathon. Compete for ₹1,00,000+ in prizes at IIIT Allahabad." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 Hackathon" />
@@ -100,7 +100,6 @@ export default function HackathonPage({
           {siteConfig.hackathonHidden !== 'true' && (
             <div className="hackathon-stat-strip">
               <div className="hstat"><span className="hstat-value">{siteConfig.hackathonPrizePool || '₹1,00,000+'}</span><span className="hstat-label">Prize Pool</span></div>
-              <div className="hstat"><span className="hstat-value">{siteConfig.hackathonDuration || '36 Hrs'}</span><span className="hstat-label">Duration</span></div>
               <div className="hstat"><span className="hstat-value">{siteConfig.hackathonTeamSize || '2–4'}</span><span className="hstat-label">Team Size</span></div>
               <div className="hstat"><span className="hstat-value">{siteConfig.hackathonDates || 'Aug 28–30'}</span><span className="hstat-label">Event Dates</span></div>
               <div className="hstat"><span className="hstat-value">{siteConfig.hackathonVenue || 'IIITA'}</span><span className="hstat-label">Venue</span></div>
@@ -327,7 +326,7 @@ export default function HackathonPage({
         <div className="hackathon-cta-strip">
           <div>
             <h3>{siteConfig.hackathonCtaReady || 'Ready to Build?'}</h3>
-            <p>{siteConfig.hackathonCtaDesc || 'Registration is open until August 10, 2026. Spots are limited — secure your team today.'}</p>
+            <p>{siteConfig.hackathonCtaDesc || 'Registration is open until August 10, 2026. Spots are limited - secure your team today.'}</p>
           </div>
           <div className="actions-row">
             <button type="button" className="btn btn-primary" onClick={() => window.open(siteConfig.registrationFormUrl, '_blank')}>

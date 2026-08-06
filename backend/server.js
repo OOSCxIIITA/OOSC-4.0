@@ -299,7 +299,7 @@ app.post('/admin/login', async (req, res) => {
   if (!whitelistEntry) {
     await recordAudit({
       email,
-      action: 'Login rejected — email not in whitelist',
+      action: 'Login rejected - email not in whitelist',
       resource: 'AdminAuth',
       ipAddress: getClientIp(req),
     })
@@ -317,7 +317,7 @@ app.post('/admin/login', async (req, res) => {
   if (!passwordValid) {
     await recordAudit({
       email,
-      action: 'Failed login — wrong password',
+      action: 'Failed login - wrong password',
       resource: 'AdminAuth',
       ipAddress: getClientIp(req),
     })

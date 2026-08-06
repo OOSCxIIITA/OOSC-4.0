@@ -18,7 +18,7 @@ const knowledgeBase = [
     intents: ['when is the conference', 'when does it start', 'when is oosc', 'what are the dates', 'which month'],
     phrases: ['conference date', 'event date', 'start date', 'event dates'],
     words: ['dates'],
-    answer: `📅 **OOSC'26** runs from **August 28–30, 2026** — that's 3 full days of talks, workshops, hackathons, and networking!`,
+    answer: `📅 **OOSC'26** runs from **August 28–30, 2026** - that's 3 full days of talks, workshops, hackathons, and networking!`,
     nav: { label: 'See Full Schedule', route: 'schedule' },
   },
   {
@@ -26,7 +26,7 @@ const knowledgeBase = [
     intents: ['where is the conference', 'where is it held', 'where is oosc', 'how to reach', 'what is the venue'],
     phrases: ['venue location', 'iiit allahabad', 'conference venue', 'event location'],
     words: ['venue', 'location', 'address', 'campus', 'prayagraj', 'allahabad', 'directions'],
-    answer: `📍 The conference is held at **IIIT ALLAHABAD** — Devghat, Jhalwa, Prayagraj, Uttar Pradesh 211015.`,
+    answer: `📍 The conference is held at **IIIT ALLAHABAD** - Devghat, Jhalwa, Prayagraj, Uttar Pradesh 211015.`,
     nav: { label: 'View Location & Map', route: 'contact' },
   },
   {
@@ -34,7 +34,7 @@ const knowledgeBase = [
     intents: ['how to register', 'how do i register', 'how to sign up', 'how to join', 'how to apply', 'how to participate', 'can i register'],
     phrases: ['sign up', 'google form', 'registration form'],
     words: ['register', 'registration', 'signup', 'enroll'],
-    answer: `📝 Registration is done via Google Form! Click below to go to our registration page and secure your spot. Hurry — seats are limited!`,
+    answer: `📝 Registration is done via Google Form! Click below to go to our registration page and secure your spot. Hurry - seats are limited!`,
     nav: { label: 'Register Now', route: 'register' },
   },
   {
@@ -122,7 +122,7 @@ const knowledgeBase = [
     intents: ['how can i network', 'are there networking events', 'can i meet mentors'],
     phrases: ['networking hub', 'mentor hours', 'meet mentors'],
     words: ['networking', 'mentorship', 'mentors'],
-    answer: `🤝 OOSC'26 offers incredible networking:\n• **Networking Hub** for connecting with faculty, contributors, and engineers\n• **Mentor Hours** — 1-on-1 sessions with senior open source contributors\n• **Sponsor Showcase** — meet company reps and explore opportunities`,
+    answer: `🤝 OOSC'26 offers incredible networking:\n• **Networking Hub** for connecting with faculty, contributors, and engineers\n• **Mentor Hours** - 1-on-1 sessions with senior open source contributors\n• **Sponsor Showcase** - meet company reps and explore opportunities`,
     nav: { label: 'View Schedule', route: 'schedule' },
   },
   {
@@ -199,14 +199,14 @@ const knowledgeBase = [
     intents: ['what pages are there', 'show me all pages', 'what can i find here', 'help me navigate', 'where can i find'],
     phrases: ['all pages', 'site map', 'website pages'],
     words: ['navigate', 'navigation', 'sitemap', 'pages'],
-    answer: `🗺️ Here are all the pages on our website:\n\n• 🏠 **Home** — Event overview & highlights\n• ⚡ **Hackathon** — Tracks, prizes, rules\n• 📋 **Schedule** — 3-day conference timeline\n• 🎤 **Speakers** — Speaker profiles & bios\n• 🤝 **Sponsors** — Our sponsor partners\n• 👥 **Team** — Organizing committee\n• 📝 **Register** — Sign up for the event\n• 📬 **Contact** — Reach the organizers\n\nJust ask me about any page!`,
+    answer: `🗺️ Here are all the pages on our website:\n\n• 🏠 **Home** - Event overview & highlights\n• ⚡ **Hackathon** - Tracks, prizes, rules\n• 📋 **Schedule** - 3-day conference timeline\n• 🎤 **Speakers** - Speaker profiles & bios\n• 🤝 **Sponsors** - Our sponsor partners\n• 👥 **Team** - Organizing committee\n• 📝 **Register** - Sign up for the event\n• 📬 **Contact** - Reach the organizers\n\nJust ask me about any page!`,
   },
   {
     id: 'bye',
     intents: [],
     phrases: ['see you', 'good bye'],
     words: ['bye', 'goodbye', 'later'],
-    answer: `👋 Goodbye! Hope to see you at OOSC'26 — Aug 28–30 at IIIT Allahabad. Take care! 🎉`,
+    answer: `👋 Goodbye! Hope to see you at OOSC'26 - Aug 28–30 at IIIT Allahabad. Take care! 🎉`,
   },
 ]
 
@@ -230,7 +230,7 @@ function scoreEntry(input, entry) {
   const norm = normalize(input)
   let best = 0
 
-  // 1. Intent matching (highest priority — full question patterns)
+  // 1. Intent matching (highest priority - full question patterns)
   for (const intent of entry.intents) {
     const ni = normalize(intent)
     if (norm.includes(ni) || ni.includes(norm)) {
@@ -251,7 +251,7 @@ function scoreEntry(input, entry) {
     }
   }
 
-  // 2. Phrase matching (multi-word — medium-high priority)
+  // 2. Phrase matching (multi-word - medium-high priority)
   for (const phrase of entry.phrases) {
     const np = normalize(phrase)
     if (norm.includes(np)) {
@@ -264,7 +264,7 @@ function scoreEntry(input, entry) {
   for (const word of entry.words) {
     const nw = normalize(word)
     if (inputWords.includes(nw)) {
-      // Single words get a moderate score — can be overridden by better intent/phrase matches
+      // Single words get a moderate score - can be overridden by better intent/phrase matches
       best = Math.max(best, 0.55)
     }
   }

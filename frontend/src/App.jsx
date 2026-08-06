@@ -894,7 +894,7 @@ function App() {
       hackathonDates: 'Aug 28–30',
       hackathonVenue: 'IIITA',
       hackathonCtaReady: 'Ready to Build?',
-      hackathonCtaDesc: 'Registration is open until August 10, 2026. Spots are limited — secure your team today.',
+      hackathonCtaDesc: 'Registration is open until August 10, 2026. Spots are limited - secure your team today.',
       contactTitle: 'Get in Touch',
       contactSubtitle: 'Have questions about OOSC 4.0? Reach out to our dedicated teams below.'
     }
@@ -905,7 +905,7 @@ function App() {
       hackathonEligibility: "Item 1\\nItem 2\\nItem 3...",
       hackathonTeamComposition: "Icon (Lucide Name) || Label\\nUser || Min 2 members...",
       hackathonPrizes: "Icon (Lucide Name) || Position || Amount || Description || Class (gold/silver/bronze)\\nTrophy || 1st Place || ₹50,000 || Cash + Trophies || gold...",
-      hackathonSpecialPrizes: "Icon (Lucide Name) || Label\\nLightbulb || Best Innovation — ₹10,000...",
+      hackathonSpecialPrizes: "Icon (Lucide Name) || Label\\nLightbulb || Best Innovation - ₹10,000...",
       hackathonRules: "Rule 1\\nRule 2\\nRule 3...",
       hackathonTimeline: "Label || Date/Value || Description || Status (past/active)\\nRegistration Opens || July 15 || Portal goes live || past...",
       hackathonSteps: "Step Title || Step Description\\nForm Your Team || Assemble 2-4 members...",
@@ -931,7 +931,7 @@ function App() {
           <Link
             to="/"
             className="brand"
-            title="OOSC 4.0 — Back to home"
+            title="OOSC 4.0 - Back to home"
             aria-label="OOSC 4.0 home"
             onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
           >
@@ -947,7 +947,7 @@ function App() {
           </a>
         </div>
 
-        {/* Tablet shortcut nav — visible only at tablet breakpoint */}
+        {/* Tablet shortcut nav - visible only at tablet breakpoint */}
         <nav className="nav-shortcuts" aria-label="Quick navigation">
           {[
             { key: 'home', path: '/', label: 'Home' },
@@ -969,7 +969,7 @@ function App() {
           ))}
         </nav>
 
-        {/* Full nav — inline on desktop, dropdown on tablet & mobile */}
+        {/* Full nav - inline on desktop, dropdown on tablet & mobile */}
         <nav className={`main-nav ${mobileMenuOpen ? 'mobile-open' : ''}`} aria-label="Primary navigation">
           {pageRoutes.map((route) => (
             <Link
@@ -1031,7 +1031,7 @@ function App() {
             </button>
           )}
 
-          {/* Hamburger toggle — visible on tablet & mobile */}
+          {/* Hamburger toggle - visible on tablet & mobile */}
           <button
             type="button"
             className={`hamburger-toggle ${mobileMenuOpen ? 'open' : ''}`}

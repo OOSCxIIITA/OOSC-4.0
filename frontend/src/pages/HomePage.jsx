@@ -119,11 +119,11 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
   return (
     <>
       <Helmet>
-        <title>OOSC 4.0 — Opportunity Open Source Conference</title>
+        <title>OOSC 4.0 - Opportunity Open Source Conference</title>
         <meta name="description" content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons." />
         <meta name="keywords" content="OOSC 4.0, Opportunity Open Source Conference, IIIT Allahabad, open source, hackathon, workshops, tech conference India, Prayagraj" />
         <link rel="canonical" href="https://oosc.iiita.ac.in/" />
-        <meta property="og:title" content="OOSC 4.0 — Opportunity Open Source Conference" />
+        <meta property="og:title" content="OOSC 4.0 - Opportunity Open Source Conference" />
         <meta property="og:description" content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons." />
         <meta property="og:url" content="https://oosc.iiita.ac.in/" />
         <meta property="og:type" content="website" />
@@ -132,7 +132,7 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="OOSC 4.0 Opportunity Open Source Conference logo" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="OOSC 4.0 — Opportunity Open Source Conference | IIIT Allahabad" />
+        <meta name="twitter:title" content="OOSC 4.0 - Opportunity Open Source Conference | IIIT Allahabad" />
         <meta name="twitter:description" content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 Opportunity Open Source Conference logo" />
@@ -144,12 +144,12 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
           <div className="hero-copy">
             {/* Host Institute & Organizer Branding Badges */}
             <div className="hero-host-partner-badge">
-              <a href="https://iiita.ac.in" target="_blank" rel="noopener noreferrer" className="hero-partner-chip" title="IIIT Allahabad — Host Institute">
+              <a href="https://iiita.ac.in" target="_blank" rel="noopener noreferrer" className="hero-partner-chip" title="IIIT Allahabad - Host Institute">
                 <img src="/IIIT_logo_transparent.gif" alt="IIIT Allahabad logo" className="hero-chip-icon" width="24" height="24" />
                 <span>Hosted by <strong>IIIT Allahabad</strong></span>
               </a>
               <span className="hero-chip-divider">•</span>
-              <a href="https://gdsc.iiita.ac.in" target="_blank" rel="noopener noreferrer" className="hero-partner-chip" title="GDG On Campus IIITA — Community Partner">
+              <a href="https://gdsc.iiita.ac.in" target="_blank" rel="noopener noreferrer" className="hero-partner-chip" title="GDG On Campus IIITA - Community Partner">
                 <img src="/gdglogo.png" alt="GDG logo" className="hero-chip-icon" width="24" height="24" />
                 <span>Organized with <strong>GDG IIITA</strong></span>
               </a>
