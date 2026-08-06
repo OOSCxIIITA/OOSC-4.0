@@ -111,7 +111,7 @@ export default function Registration({ siteConfig = {}, registrationCards = [], 
                   Coupon Applied: Early100
                 </div>
                 <a 
-                  href="https://shorturl.at/NO4xb"
+                  href="https://konfhub.com/checkout/oosc?ticketId=115832%7C1%3B&selectedCode=EARLY100&utm_source=Website"
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn"
