@@ -96,7 +96,7 @@ export default function HackathonPage({
           </div>
           <h1>{siteConfig.hackathonTitle || 'Build the Future of Open Systems'}</h1>
           <p className="theme-label">Event Theme</p>
-          <p className="theme-name">"{siteConfig.hackathonTheme || 'To be released on 18 Aug'}"</p>
+          <p className="theme-name">"{siteConfig.hackathonTheme || 'To be released on 15 Aug'}"</p>
           {siteConfig.hackathonHidden !== 'true' && (
             <div className="hackathon-stat-strip">
               <div className="hstat"><span className="hstat-value">{siteConfig.hackathonPrizePool || '₹1,00,000+'}</span><span className="hstat-label">Prize Pool</span></div>
@@ -143,7 +143,7 @@ export default function HackathonPage({
           ) : (
             <>
               <p className="problem-statement-text">
-                To be released on 18 Aug. Stay tuned for exciting problem statements and challenges!
+                To be released on 15 Aug. Stay tuned for exciting problem statements and challenges!
               </p>
               <br />
             </>
