@@ -59,13 +59,6 @@ export default function ContactPage({ siteConfig, form, setForm, formStatus, han
             <p className="channel-desc">For general inquiries, sponsorships, and speaker submissions.</p>
             <div className="channel-value">oosc@iita.ac.in</div>
           </div>
-          
-          <div className="channel-card glass-card featured">
-            <div className="channel-icon"><Phone size={32} /></div>
-            <h3>Call / WhatsApp</h3>
-            <p className="channel-desc">Urgent queries regarding hackathon registration or venue directions.</p>
-            <div className="channel-value">+91 9236 518 179</div>
-          </div>
 
           <div className="channel-card glass-card">
             <div className="channel-icon"><MapPin size={32} /></div>

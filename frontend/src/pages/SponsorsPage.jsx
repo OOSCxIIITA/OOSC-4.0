@@ -228,10 +228,6 @@ export default function SponsorsPage({
               <h4 className="coordinator-name">Sudhanshu</h4>
               <p className="coordinator-role">OVERALL COORDINATOR</p>
               <div className="contact-info-row">
-                <Phone size={18} strokeWidth={2} />
-                <span>+91 98919 07290</span>
-              </div>
-              <div className="contact-info-row">
                 <Mail size={18} strokeWidth={2} />
                 <a href="mailto:iit2024081@iiita.ac.in">iit2024081@iiita.ac.in</a>
               </div>
@@ -240,10 +236,7 @@ export default function SponsorsPage({
             <div className="contact-card coordinator-card-new">
               <h4 className="coordinator-name">Rishu Kumar</h4>
               <p className="coordinator-role">OVERALL COORDINATOR</p>
-              <div className="contact-info-row">
-                <Phone size={18} strokeWidth={2} />
-                <span>+91 62395 91434</span>
-              </div>
+             
               <div className="contact-info-row">
                 <Mail size={18} strokeWidth={2} />
                 <a href="mailto:iit2024183@iiita.ac.in">iit2024183@iiita.ac.in</a>
@@ -253,10 +246,6 @@ export default function SponsorsPage({
             <div className="contact-card coordinator-card-new">
               <h4 className="coordinator-name">Aditya Ajay</h4>
               <p className="coordinator-role">OVERALL COORDINATOR</p>
-              <div className="contact-info-row">
-                <Phone size={18} strokeWidth={2} />
-                <span>+91 92365 18179</span>
-              </div>
               <div className="contact-info-row">
                 <Mail size={18} strokeWidth={2} />
                 <a href="mailto:iit2024174@iiita.ac.in">iit2024174@iiita.ac.in</a>
