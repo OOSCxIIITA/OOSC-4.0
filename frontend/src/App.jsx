@@ -441,7 +441,7 @@ function App() {
     ],
     'hackathon-tracks': [
       { key: 'title', label: 'Track Title', type: 'text', placeholder: 'e.g. Core Systems & Kernel' },
-      { key: 'description', label: 'Track Description', type: 'textarea', placeholder: 'e.g. Focus on optimizing Linux kernel modules...' },
+      { key: 'description', label: 'Track Description (HTML)', type: 'textarea', placeholder: 'e.g. <p>Focus on optimizing Linux kernel modules...</p>' },
       { key: 'sortOrder', label: 'Sort Order', type: 'number', placeholder: 'e.g. 1' },
     ],
     'hackathon-eligibility': [

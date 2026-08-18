@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import * as LucideIcons from 'lucide-react'
-import { Target, Users, Check, User, Globe, Trophy, Medal, Star, Lightbulb, Leaf, Palette, Zap, Bot, ClipboardList, Calendar, Rocket } from 'lucide-react'
+import { Target, Users, Check, User, Globe, Trophy, Medal, Star, Lightbulb, Leaf, Palette, Zap, Bot, ClipboardList, Calendar, Rocket, X } from 'lucide-react'
 import './HackathonPage.css'
 
 const renderLucideIcon = (iconStr, fallbackIcon, size = 16) => {
@@ -26,6 +26,7 @@ export default function HackathonPage({
   hkSteps, setHkSteps, 
   openModal, editRecord, deleteRecord 
 }) {
+  const [selectedTrack, setSelectedTrack] = useState(null)
   const sortedTracks = [...(hkTracks || [])].sort((a, b) => a.sortOrder - b.sortOrder)
   const sortedEligibility = [...(hkEligibility || [])].sort((a, b) => a.sortOrder - b.sortOrder)
   const sortedTeamComp = [...(hkTeamComp || [])].sort((a, b) => a.sortOrder - b.sortOrder)
@@ -153,7 +154,10 @@ export default function HackathonPage({
             {sortedTracks.length > 0 ? sortedTracks.map((t, i) => (
               <div key={t.id} className="rule-item" style={{ position: 'relative' }}>
                 <span className="rule-num">{String.fromCharCode(65 + i)}</span>
-                <p><strong>{t.title}:</strong> {t.description}</p>
+                <div>
+                  <p style={{ margin: 0 }}><strong>{t.title}</strong></p>
+                  <button type="button" className="btn btn-outline" style={{ marginTop: '8px', padding: '4px 12px', fontSize: '0.85rem' }} onClick={() => setSelectedTrack(t)}>More Details</button>
+                </div>
                 {adminMode && (
                   <div style={{ position: 'absolute', top: '0', right: '0', display: 'flex', gap: '8px' }}>
                     <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-tracks', t)}>Edit</button>
@@ -339,6 +343,20 @@ export default function HackathonPage({
         </div>
       )}
       </>
+      )}
+
+      {selectedTrack && (
+        <div className="admin-modal-backdrop" role="dialog" aria-modal="true" onClick={(e) => { if (e.target === e.currentTarget) setSelectedTrack(null) }} style={{ zIndex: 9999 }}>
+          <div className="admin-modal-panel glass-card">
+            <div className="admin-modal-header">
+              <h3 style={{ margin: 0, fontSize: '1.25rem' }}>{selectedTrack.title}</h3>
+              <button type="button" className="btn-close-modal" onClick={() => setSelectedTrack(null)} aria-label="Close dialog"><X size={20} /></button>
+            </div>
+            <div className="admin-modal-body" style={{ maxHeight: '60vh', overflowY: 'auto', padding: '20px 0', textAlign: 'left', display: 'flex', flexDirection: 'column' }}>
+              <div dangerouslySetInnerHTML={{ __html: selectedTrack.description }} className="track-description-html" style={{ lineHeight: '1.6' }} />
+            </div>
+          </div>
+        </div>
       )}
 
     </div>

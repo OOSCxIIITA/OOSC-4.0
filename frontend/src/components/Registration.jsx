@@ -106,29 +106,14 @@ export default function Registration({ siteConfig = {}, registrationCards = [], 
             </p>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '300px' }}>
-              <div style={{ position: 'relative' }}>
-                <div style={{ position: 'absolute', top: '-12px', right: '-10px', background: '#ff3366', color: 'white', fontSize: '0.8rem', padding: '4px 8px', borderRadius: '12px', fontWeight: 'bold', zIndex: 1, boxShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
-                  Coupon Applied: Early100
-                </div>
-                <a 
-                  href="https://konfhub.com/checkout/oosc?ticketId=115832%7C1%3B&selectedCode=EARLY100&utm_source=Website"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn"
-                  style={{ width: '100%', padding: '16px 20px', fontSize: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', borderRadius: '8px', textDecoration: 'none', background: 'var(--color-accent)', color: '#000', fontWeight: 'bold' }}
-                >
-                  Buy Early Bird Pass <ExternalLink size={20} />
-                </a>
-              </div>
-              
               <a 
                 href="https://konfhub.com/oosc"
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="btn btn-outline"
-                style={{ width: '100%', padding: '14px 20px', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', borderRadius: '8px', textDecoration: 'none', border: '1px solid var(--color-accent)', color: 'var(--color-accent)' }}
+                className="btn"
+                style={{ width: '100%', padding: '16px 20px', fontSize: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', borderRadius: '8px', textDecoration: 'none', background: 'var(--color-accent)', color: '#000', fontWeight: 'bold' }}
               >
-                Regular Pass <ExternalLink size={18} />
+                Buy Regular Pass <ExternalLink size={20} />
               </a>
             </div>
           </div>

@@ -63,6 +63,15 @@ export default function SchedulePage({
           <span>{siteConfig.scheduleEyebrow || 'Timeline'}</span>
           <h1>{siteConfig.scheduleTitle || 'Conference Schedule'}</h1>
           <p>{siteConfig.scheduleSubtitle || 'Track opening talks, workshops, hackathon check-ins, and panel discussions.'}</p>
+          <a 
+            href="https://events.canonical.com/event/154/timetable/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn btn-primary"
+            style={{ marginTop: '16px', display: 'inline-block' }}
+          >
+            View Full Timetable ↗
+          </a>
         </div>
         {adminMode && (
           <button type="button" className="btn btn-admin-add" onClick={() => openModal('events', 'create')}>
