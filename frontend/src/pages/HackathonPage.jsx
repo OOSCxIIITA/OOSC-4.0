@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import * as LucideIcons from 'lucide-react'
-import { Target, Users, Check, User, Globe, Trophy, Medal, Star, Lightbulb, Leaf, Palette, Zap, Bot, ClipboardList, Calendar, Rocket, X } from 'lucide-react'
+import { Target, Users, Check, Trophy, Medal, Star, ClipboardList, Calendar, Rocket, X, ArrowRight, Edit2, Trash2, Plus, HelpCircle } from 'lucide-react'
 import './HackathonPage.css'
 
 const renderLucideIcon = (iconStr, fallbackIcon, size = 16) => {
@@ -14,27 +14,43 @@ const renderLucideIcon = (iconStr, fallbackIcon, size = 16) => {
   return <span style={{ fontSize: `${size}px` }}>{iconStr}</span>;
 }
 
+const formatNumber = (num) => String(num).padStart(2, '0')
+
 export default function HackathonPage({ 
-  siteConfig, navigateTo, adminMode, 
-  hkTracks, setHkTracks, 
-  hkEligibility, setHkEligibility, 
-  hkTeamComp, setHkTeamComp, 
-  hkPrizes, setHkPrizes, 
-  hkSpecialPrizes, setHkSpecialPrizes, 
-  hkRules, setHkRules, 
-  hkTimeline, setHkTimeline, 
-  hkSteps, setHkSteps, 
-  openModal, editRecord, deleteRecord 
+  siteConfig = {}, 
+  navigateTo, 
+  adminMode, 
+  hkTracks = [], 
+  setHkTracks, 
+  hkEligibility = [], 
+  setHkEligibility, 
+  hkTeamComp = [], 
+  setHkTeamComp, 
+  hkPrizes = [], 
+  setHkPrizes, 
+  hkSpecialPrizes = [], 
+  setHkSpecialPrizes, 
+  hkRules = [], 
+  setHkRules, 
+  hkTimeline = [], 
+  setHkTimeline, 
+  hkSteps = [], 
+  setHkSteps, 
+  openModal, 
+  editRecord, 
+  deleteRecord 
 }) {
   const [selectedTrack, setSelectedTrack] = useState(null)
-  const sortedTracks = [...(hkTracks || [])].sort((a, b) => a.sortOrder - b.sortOrder)
-  const sortedEligibility = [...(hkEligibility || [])].sort((a, b) => a.sortOrder - b.sortOrder)
-  const sortedTeamComp = [...(hkTeamComp || [])].sort((a, b) => a.sortOrder - b.sortOrder)
-  const sortedPrizes = [...(hkPrizes || [])].sort((a, b) => a.sortOrder - b.sortOrder)
-  const sortedSpecialPrizes = [...(hkSpecialPrizes || [])].sort((a, b) => a.sortOrder - b.sortOrder)
-  const sortedRules = [...(hkRules || [])].sort((a, b) => a.sortOrder - b.sortOrder)
-  const sortedTimeline = [...(hkTimeline || [])].sort((a, b) => a.sortOrder - b.sortOrder)
-  const sortedSteps = [...(hkSteps || [])].sort((a, b) => a.sortOrder - b.sortOrder)
+  
+  const sortedTracks = [...(hkTracks || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  const sortedEligibility = [...(hkEligibility || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  const sortedTeamComp = [...(hkTeamComp || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  const sortedPrizes = [...(hkPrizes || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  const sortedSpecialPrizes = [...(hkSpecialPrizes || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  const sortedRules = [...(hkRules || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  const sortedTimeline = [...(hkTimeline || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+  const sortedSteps = [...(hkSteps || [])].sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+
   return (
     <div className="hackathon-body" id="hackathon">
       <Helmet>
@@ -50,7 +66,7 @@ export default function HackathonPage({
         <meta property="og:image:alt" content="OOSC 4.0 Hackathon" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Hackathon - OOSC 4.0 | IIIT Allahabad" />
-        <meta name="twitter:description" content="Join the OOSC 4.0 Hackathon. Compete for ₹1,00,000+ in prizes at IIIT Allahabad." />
+        <meta name="twitter:description" content="Join the OOSC 4.0 Hackathon. Compete for prizes at IIIT Allahabad." />
         <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
         <meta name="twitter:image:alt" content="OOSC 4.0 Hackathon" />
         <script type="application/ld+json">
@@ -87,273 +103,491 @@ export default function HackathonPage({
         </script>
       </Helmet>
 
-      {/* ── HERO BANNER ── */}
+      {/* ── 1. HERO BANNER ── */}
       {(siteConfig.hackathonHidden !== 'true' || adminMode) && (
-        <div className="hackathon-hero">
-        <div className="hackathon-hero-inner">
-          <div className="hackathon-badge">
-            <span className="badge-dot"></span>
-            {siteConfig.hackathonBadge || 'OOSC 4.0 · Hackathon 2026'}
-          </div>
-          <h1>{siteConfig.hackathonTitle || 'Build the Future of Open Systems'}</h1>
-          <p className="theme-label">Event Theme</p>
-          <p className="theme-name">"{siteConfig.hackathonTheme || 'To be released on 15 Aug'}"</p>
-          {siteConfig.hackathonHidden !== 'true' && (
-            <div className="hackathon-stat-strip">
-              <div className="hstat"><span className="hstat-value">{siteConfig.hackathonPrizePool || '₹1,00,000+'}</span><span className="hstat-label">Prize Pool</span></div>
-              <div className="hstat"><span className="hstat-value">{siteConfig.hackathonTeamSize || '2–4'}</span><span className="hstat-label">Team Size</span></div>
-              <div className="hstat"><span className="hstat-value">{siteConfig.hackathonDates || 'Aug 28–30'}</span><span className="hstat-label">Event Dates</span></div>
-              <div className="hstat"><span className="hstat-value">{siteConfig.hackathonVenue || 'IIITA'}</span><span className="hstat-label">Venue</span></div>
+        <section className="hackathon-hero">
+          <div className="hackathon-hero-inner">
+            <div className="hackathon-badge">
+              <span className="badge-dot"></span>
+              <span>{siteConfig.hackathonBadge || 'OOSC 4.0 · HACKATHON 2026'}</span>
             </div>
-          )}
-        </div>
-      </div>
+            
+            <h1 className="hackathon-hero-title">
+              {siteConfig.hackathonTitle || 'BUILD THE FUTURE'}
+            </h1>
+            
+            <div className="hackathon-theme-box">
+              <span className="theme-label">Event Theme</span>
+              <p className="theme-name">
+                "{siteConfig.hackathonTheme || 'Problem Statements are live...'}"
+              </p>
+            </div>
+
+            {siteConfig.hackathonHidden !== 'true' && (
+              <div className="hackathon-stat-strip">
+                <div className="hstat">
+                  <span className="hstat-value">{siteConfig.hackathonPrizePool || '₹40,000+'}</span>
+                  <span className="hstat-label">Prize Pool</span>
+                </div>
+                <div className="hstat">
+                  <span className="hstat-value">{siteConfig.hackathonTeamSize || '2–3'}</span>
+                  <span className="hstat-label">Team Size</span>
+                </div>
+                <div className="hstat">
+                  <span className="hstat-value">{siteConfig.hackathonDates || 'Aug 18–30'}</span>
+                  <span className="hstat-label">Event Dates</span>
+                </div>
+                <div className="hstat">
+                  <span className="hstat-value">{siteConfig.hackathonVenue || 'IIIT Allahabad'}</span>
+                  <span className="hstat-label">Venue</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
       )}
 
       {siteConfig.hackathonHidden === 'true' && adminMode && (
-        <div className="admin-status-message error" style={{margin: '0 auto 2rem', maxWidth: '1000px', backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid var(--color-error)'}}>
+        <div className="admin-status-message error" style={{ margin: '0 auto 2rem', maxWidth: '1200px', backgroundColor: 'rgba(239, 68, 68, 0.1)', border: '1px solid var(--color-error)', borderRadius: '12px', padding: '16px 20px' }}>
           🚨 <strong>Admin Notice:</strong> The Hackathon page content is currently HIDDEN from the public. Only admins can see the sections below.
         </div>
       )}
 
       {siteConfig.hackathonHidden === 'true' && !adminMode ? (
-        <div style={{ textAlign: 'center', padding: '4rem 2rem', minHeight: '40vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <div className="hk-icon" style={{ marginBottom: '1rem' }}><Rocket size={48} color="var(--color-brand-blue)" /></div>
-          <h2 style={{ fontSize: '2rem', color: 'var(--color-text)' }}>Hackathon Details Coming Soon</h2>
-          <p style={{ marginTop: '1rem', color: 'var(--color-text-muted)', maxWidth: '600px' }}>
+        <div style={{ textAlign: 'center', padding: '5rem 2rem', minHeight: '45vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="hk-icon" style={{ marginBottom: '1.25rem' }}><Rocket size={48} color="var(--color-brand-blue)" /></div>
+          <h2 style={{ fontSize: '2rem', color: 'var(--color-heading-bright)' }}>Hackathon Details Coming Soon</h2>
+          <p style={{ marginTop: '1rem', color: 'var(--color-text-warm-muted)', maxWidth: '600px', lineHeight: '1.7' }}>
             We are currently finalizing the details, problem statements, and rules for the upcoming OOSC 4.0 Hackathon. 
             Stay tuned!
           </p>
         </div>
       ) : (
-        <>
-          {/* ── PROBLEM STATEMENT + ELIGIBILITY ── */}
+        <div className="hackathon-content-container">
+          
+          {/* ── 2. WHO CAN PARTICIPATE (FULL WIDTH COMPACT) ── */}
+          <section className="hk-card hk-section-participation">
+            <div className="hk-card-header">
+              <div className="hk-title-group">
+                <div className="hk-icon"><Users size={22} color="var(--color-brand-blue)" /></div>
+                <h2 className="hk-section-heading">Who Can Participate</h2>
+              </div>
+            </div>
+
+            <div className="participation-content-grid">
+              {/* Eligibility Sub-block */}
+              <div className="hk-subgroup">
+                <div className="hk-subgroup-header">
+                  <span className="hk-subheading-tag">ELIGIBILITY</span>
+                  {adminMode && (
+                    <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-eligibility', 'create')}>
+                      <Plus size={13} /> Add
+                    </button>
+                  )}
+                </div>
+                <div className="clean-eligibility-list">
+                  {sortedEligibility.length > 0 ? sortedEligibility.map((item) => (
+                    <div key={item.id} className="clean-eligibility-row">
+                      <div className="clean-check-icon">
+                        <Check size={16} />
+                      </div>
+                      <div className="clean-elig-content">
+                        <p>{item.content}</p>
+                      </div>
+                      {adminMode && (
+                        <div className="hk-item-admin">
+                          <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-eligibility', item)}>
+                            <Edit2 size={13} />
+                          </button>
+                          <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-eligibility', item.id, setHkEligibility)}>
+                            <Trash2 size={13} />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )) : (
+                    <div className="hk-empty-state light">
+                      <p>No eligibility criteria added yet.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Team Composition Sub-block */}
+              <div className="hk-subgroup">
+                <div className="hk-subgroup-header">
+                  <span className="hk-subheading-tag">TEAM COMPOSITION</span>
+                  {adminMode && (
+                    <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-team-comp', 'create')}>
+                      <Plus size={13} /> Add
+                    </button>
+                  )}
+                </div>
+                <div className="team-pill-list">
+                  {sortedTeamComp.length > 0 ? sortedTeamComp.map((t) => (
+                    <div key={t.id} className="team-comp-pill">
+                      <span className="pill-icon">{renderLucideIcon(t.icon, <Users size={15} />, 15)}</span>
+                      <span className="pill-text">{t.label}</span>
+                      {adminMode && (
+                        <div className="pill-admin-actions">
+                          <span role="button" title="Edit" onClick={() => editRecord('hackathon-team-comp', t)}>✎</span>
+                          <span role="button" title="Delete" className="pill-del" onClick={() => deleteRecord('hackathon-team-comp', t.id, setHkTeamComp)}>×</span>
+                        </div>
+                      )}
+                    </div>
+                  )) : (
+                    <div className="hk-empty-state light">
+                      <p>No team rules added yet.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── 3. PROBLEM STATEMENTS (FULL WIDTH 2-COLUMN GRID) ── */}
+          <section className="hk-card hk-section-tracks">
+            <div className="hk-card-header">
+              <div className="hk-title-group">
+                <div className="hk-icon"><Target size={22} color="var(--color-brand-blue)" /></div>
+                <h2 className="hk-section-heading">Problem Statements</h2>
+              </div>
+              {adminMode && (
+                <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-tracks', 'create')}>
+                  <Plus size={14} /> Add Track
+                </button>
+              )}
+            </div>
+
+            {siteConfig.hackathonProblemStatement && (
+              <div className="hk-intro-text">
+                {siteConfig.hackathonProblemStatement.split('\n').filter(p => p.trim()).map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
+            )}
+
+            <div className="track-cards-grid">
+              {sortedTracks.length > 0 ? sortedTracks.map((t, i) => (
+                <div 
+                  key={t.id || i} 
+                  className="track-card"
+                  onClick={() => setSelectedTrack(t)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedTrack(t); } }}
+                >
+                  <div className="track-card-top">
+                    <span className="track-num">{formatNumber(i + 1)}</span>
+                    {adminMode && (
+                      <div className="hk-item-admin" onClick={(e) => e.stopPropagation()}>
+                        <button type="button" className="btn-icon" title="Edit" onClick={() => editRecord('hackathon-tracks', t)}>
+                          <Edit2 size={13} />
+                        </button>
+                        <button type="button" className="btn-icon btn-delete" title="Delete" onClick={() => deleteRecord('hackathon-tracks', t.id, setHkTracks)}>
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="track-title">{t.title}</h3>
+                  <div className="track-card-footer">
+                    <span className="track-link">
+                      More Details <ArrowRight size={15} />
+                    </span>
+                  </div>
+                </div>
+              )) : (
+                <div className="hk-empty-state">
+                  <p>No problem statements available yet.</p>
+                </div>
+              )}
+            </div>
+
+            <div className="hk-footnote">
+              <p>All solutions must be open-source, reproducible, and include a live demo or working prototype.</p>
+            </div>
+          </section>
+
+          {/* ── 3. PRIZES & REWARDS ── */}
+          <section className="hk-card hk-section-prizes">
+            <div className="hk-card-header">
+              <div className="hk-title-group">
+                <div className="hk-icon"><Trophy size={24} color="#f59e0b" /></div>
+                <h2 className="hk-section-heading">Prizes &amp; Rewards</h2>
+              </div>
+              {adminMode && (
+                <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-prizes', 'create')}>
+                  <Plus size={14} /> Add Prize
+                </button>
+              )}
+            </div>
+
+            <div className="prizes-podium-grid">
+              {sortedPrizes.length > 0 ? sortedPrizes.map((prize, idx) => {
+                const isFirst = idx === 0 || (prize.colorClass && prize.colorClass.toLowerCase().includes('gold')) || prize.position?.toLowerCase().includes('1');
+                return (
+                  <div key={prize.id || idx} className={`prize-podium-card ${isFirst ? 'prize-primary-winner' : 'prize-runner-up'} ${prize.colorClass || ''}`}>
+                    {adminMode && (
+                      <div className="hk-item-admin top-right">
+                        <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-prizes', prize)}>
+                          <Edit2 size={13} />
+                        </button>
+                        <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-prizes', prize.id, setHkPrizes)}>
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+                    )}
+                    <div className="prize-badge-icon">
+                      {isFirst ? <Trophy size={38} className="trophy-icon" /> : <Medal size={30} className="medal-icon" />}
+                    </div>
+                    <span className="prize-position-tag">{prize.position}</span>
+                    <h3 className="prize-amount-display">{prize.amount}</h3>
+                    {prize.description && <p className="prize-desc-text">{prize.description}</p>}
+                  </div>
+                )
+              }) : (
+                <div className="hk-empty-state">
+                  <p>No prizes added yet.</p>
+                </div>
+              )}
+            </div>
+
+            {/* Special Category Awards */}
+            <div className="special-awards-block">
+              <div className="hk-subgroup-header">
+                <span className="hk-subheading-tag">SPECIAL CATEGORY AWARDS</span>
+                {adminMode && (
+                  <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-special-prizes', 'create')}>
+                    <Plus size={13} /> Add
+                  </button>
+                )}
+              </div>
+              <div className="special-awards-pills">
+                {sortedSpecialPrizes.length > 0 ? sortedSpecialPrizes.map((p) => (
+                  <div key={p.id} className="special-award-pill">
+                    <span className="award-icon">{renderLucideIcon(p.icon, <Star size={15} />, 15)}</span>
+                    <span className="award-text">{p.label}</span>
+                    {adminMode && (
+                      <div className="pill-admin-actions">
+                        <span role="button" title="Edit" onClick={() => editRecord('hackathon-special-prizes', p)}>✎</span>
+                        <span role="button" title="Delete" className="pill-del" onClick={() => deleteRecord('hackathon-special-prizes', p.id, setHkSpecialPrizes)}>×</span>
+                      </div>
+                    )}
+                  </div>
+                )) : (
+                  <div className="hk-empty-state light">
+                    <p>No special category awards added yet.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          </section>
+
+          {/* ── 4. RULES & GUIDELINES + IMPORTANT DATES ── */}
           <div className="hk-grid-2">
-        <div className="hk-card">
-          <div className="hk-card-title">
-            <div className="hk-icon"><Target size={32} color="var(--color-accent)" /></div>
-            <h3>Problem Statement</h3>
+            {/* Left: Rules & Guidelines */}
+            <div className="hk-card hk-section-rules">
+              <div className="hk-card-header">
+                <div className="hk-title-group">
+                  <div className="hk-icon"><ClipboardList size={22} color="var(--color-brand-blue)" /></div>
+                  <h2 className="hk-section-heading">Rules &amp; Guidelines</h2>
+                </div>
+                {adminMode && (
+                  <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-rules', 'create')}>
+                    <Plus size={14} /> Add Rule
+                  </button>
+                )}
+              </div>
+
+              <div className="clean-rules-table">
+                {sortedRules.length > 0 ? sortedRules.map((rule, i) => (
+                  <div key={rule.id || i} className="clean-rule-row">
+                    <div className="rule-num-col">
+                      <span className="clean-rule-num">{formatNumber(i + 1)}</span>
+                    </div>
+                    <div className="rule-content-col">
+                      <p>{rule.content}</p>
+                    </div>
+                    {adminMode && (
+                      <div className="hk-item-admin">
+                        <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-rules', rule)}>
+                          <Edit2 size={13} />
+                        </button>
+                        <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-rules', rule.id, setHkRules)}>
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )) : (
+                  <div className="hk-empty-state">
+                    <p>No rules added yet.</p>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Right: Important Dates (Vertical Timeline) */}
+            <div className="hk-card hk-section-timeline">
+              <div className="hk-card-header">
+                <div className="hk-title-group">
+                  <div className="hk-icon"><Calendar size={22} color="var(--color-brand-blue)" /></div>
+                  <h2 className="hk-section-heading">Important Dates</h2>
+                </div>
+                {adminMode && (
+                  <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-timeline', 'create')}>
+                    <Plus size={14} /> Add Date
+                  </button>
+                )}
+              </div>
+
+              <div className="clean-vertical-timeline">
+                {sortedTimeline.length > 0 ? sortedTimeline.map((d, idx) => (
+                  <div key={d.id || idx} className="timeline-node">
+                    <div className="timeline-line-track">
+                      <div className={`timeline-dot ${d.status === 'active' ? 'active' : ''}`}></div>
+                      {idx < sortedTimeline.length - 1 && <div className="timeline-connector-line"></div>}
+                    </div>
+                    <div className="timeline-node-content">
+                      <div className="timeline-header-row">
+                        <h4 className="timeline-item-label">{d.label}</h4>
+                        <span className="timeline-item-value">{d.value}</span>
+                      </div>
+                      {d.description && <p className="timeline-item-desc">{d.description}</p>}
+                    </div>
+                    {adminMode && (
+                      <div className="hk-item-admin">
+                        <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-timeline', d)}>
+                          <Edit2 size={13} />
+                        </button>
+                        <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-timeline', d.id, setHkTimeline)}>
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )) : (
+                  <div className="hk-empty-state">
+                    <p>No timeline dates added yet.</p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-          {siteConfig.hackathonProblemStatement ? (
-            siteConfig.hackathonProblemStatement.split('\n').filter(p => p.trim()).map((para, i) => (
-              <React.Fragment key={i}>
-                <p className="problem-statement-text">{para}</p>
-                <br />
-              </React.Fragment>
-            ))
-          ) : (
-            <>
-              <p className="problem-statement-text">
-                To be released on 15 Aug. Stay tuned for exciting problem statements and challenges!
-              </p>
-              <br />
-            </>
+
+          {/* ── 5. HOW TO REGISTER & SUBMIT ── */}
+          <section className="hk-card hk-section-steps">
+            <div className="hk-card-header">
+              <div className="hk-title-group">
+                <div className="hk-icon"><Rocket size={22} color="var(--color-brand-blue)" /></div>
+                <h2 className="hk-section-heading">How to Register &amp; Submit</h2>
+              </div>
+              {adminMode && (
+                <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-steps', 'create')}>
+                  <Plus size={14} /> Add Step
+                </button>
+              )}
+            </div>
+
+            <div className="clean-steps-grid">
+              {sortedSteps.length > 0 ? sortedSteps.map((step, i) => (
+                <div key={step.id || i} className="clean-step-card">
+                  <div className="clean-step-header">
+                    <span className="clean-step-num">{formatNumber(i + 1)}</span>
+                    {adminMode && (
+                      <div className="hk-item-admin">
+                        <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-steps', step)}>
+                          <Edit2 size={13} />
+                        </button>
+                        <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-steps', step.id, setHkSteps)}>
+                          <Trash2 size={13} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                  <div className="clean-step-body">
+                    <h4 className="clean-step-title">{step.title}</h4>
+                    <p className="clean-step-desc">{step.description}</p>
+                  </div>
+                </div>
+              )) : (
+                <div className="hk-empty-state">
+                  <p>No submission steps added yet.</p>
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* ── 6. BOTTOM CTA ── */}
+          {siteConfig.registrationFormUrl && (
+            <section className="hackathon-cta-banner">
+              <div className="cta-banner-content">
+                <h2 className="cta-banner-title">{siteConfig.hackathonCtaReady || 'READY TO BUILD?'}</h2>
+                <p className="cta-banner-desc">
+                  {siteConfig.hackathonCtaDesc || 'Registration is open. Spots are limited — secure your team today.'}
+                </p>
+              </div>
+              <div className="cta-banner-actions">
+                <button 
+                  type="button" 
+                  className="btn btn-primary btn-cta-main" 
+                  onClick={() => window.open(siteConfig.registrationFormUrl, '_blank')}
+                >
+                  Register Your Team <ArrowRight size={16} style={{ marginLeft: '6px' }} />
+                </button>
+                <button 
+                  type="button" 
+                  className="btn btn-outline btn-cta-secondary" 
+                  onClick={() => navigateTo('contact')}
+                >
+                  <HelpCircle size={16} style={{ marginRight: '6px' }} /> Ask a Question
+                </button>
+              </div>
+            </section>
           )}
-          <div className="rules-list mt-sm">
-            {adminMode && <button type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-tracks', 'create')}>+ Add Track</button>}
-            {sortedTracks.length > 0 ? sortedTracks.map((t, i) => (
-              <div key={t.id} className="rule-item" style={{ position: 'relative' }}>
-                <span className="rule-num">{String.fromCharCode(65 + i)}</span>
-                <div>
-                  <p style={{ margin: 0 }}><strong>{t.title}</strong></p>
-                  <button type="button" className="btn btn-outline" style={{ marginTop: '8px', padding: '4px 12px', fontSize: '0.85rem' }} onClick={() => setSelectedTrack(t)}>More Details</button>
-                </div>
-                {adminMode && (
-                  <div style={{ position: 'absolute', top: '0', right: '0', display: 'flex', gap: '8px' }}>
-                    <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-tracks', t)}>Edit</button>
-                    <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-tracks', t.id, setHkTracks)}>Del</button>
-                  </div>
-                )}
-              </div>
-            )) : <p>No tracks added yet.</p>}
-          </div>
-          <p className="problem-statement-text mt-md">
-            All solutions must be open-source, reproducible, and include a live demo or working prototype.
-          </p>
-        </div>
 
-        <div className="hk-card">
-          <div className="hk-card-title">
-            <div className="hk-icon"><Users size={32} color="var(--color-brand-blue)" /></div>
-            <h3>Who Can Participate</h3>
-          </div>
-          <p className="panel-subheading">Eligibility 
-            {adminMode && <button style={{marginLeft:'10px'}} type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-eligibility', 'create')}>+ Add</button>}
-          </p>
-          <div className="eligibility-list mb-md">
-            {sortedEligibility.length > 0 ? sortedEligibility.map((item) => (
-              <div key={item.id} className="eligibility-item" style={{ position: 'relative', paddingRight: '60px' }}>
-                <span className="elig-check"><Check size={16} color="var(--color-success)" /></span>
-                <p>{item.content}</p>
-                {adminMode && (
-                  <div style={{ position: 'absolute', top: '0', right: '0', display: 'flex', gap: '8px' }}>
-                    <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-eligibility', item)}>Edit</button>
-                    <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-eligibility', item.id, setHkEligibility)}>Del</button>
-                  </div>
-                )}
-              </div>
-            )) : <p>No eligibility criteria added.</p>}
-          </div>
-          <p className="panel-subheading">Team Composition
-            {adminMode && <button style={{marginLeft:'10px'}} type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-team-comp', 'create')}>+ Add</button>}
-          </p>
-          <div className="pill-row">
-            {sortedTeamComp.length > 0 ? sortedTeamComp.map((t) => (
-              <div key={t.id} className="special-prize-pill" style={{position:'relative'}}>
-                <span>{renderLucideIcon(t.icon, <Users size={16} />, 16)}</span> {t.label}
-                {adminMode && <span style={{marginLeft:'8px', cursor:'pointer', color:'var(--color-accent)'}} onClick={()=>editRecord('hackathon-team-comp', t)}>✎</span>}
-                {adminMode && <span style={{marginLeft:'8px', cursor:'pointer', color:'red'}} onClick={()=>deleteRecord('hackathon-team-comp', t.id, setHkTeamComp)}>×</span>}
-              </div>
-            )) : <p>No team rules added.</p>}
-          </div>
-        </div>
-      </div>
-
-      {/* ── PRIZES ── */}
-      <div className="hk-card">
-        <div className="hk-card-title">
-          <div className="hk-icon"><Trophy size={32} color="var(--color-brand-yellow)" /></div>
-          <h3>Prizes &amp; Rewards</h3>
-          {adminMode && <button style={{marginLeft:'auto'}} type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-prizes', 'create')}>+ Add Prize</button>}
-        </div>
-        <div className="prizes-grid">
-          {sortedPrizes.length > 0 ? sortedPrizes.map((prize) => (
-            <div key={prize.id} className={`prize-card ${prize.colorClass || 'gold'}`} style={{position:'relative'}}>
-              {adminMode && (
-                <div style={{ position: 'absolute', top: '10px', right: '10px', display: 'flex', gap: '8px' }}>
-                  <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-prizes', prize)}>Edit</button>
-                  <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-prizes', prize.id, setHkPrizes)}>Del</button>
-                </div>
-              )}
-              <div className="prize-medal"><Medal size={32} /></div>
-              <p className="prize-position">{prize.position}</p>
-              <p className="prize-amount">{prize.amount}</p>
-              <p className="prize-desc">{prize.description}</p>
-            </div>
-          )) : <p>No prizes added yet.</p>}
-        </div>
-        <p className="panel-subheading mt-section">Special Category Awards
-          {adminMode && <button style={{marginLeft:'10px'}} type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-special-prizes', 'create')}>+ Add</button>}
-        </p>
-        <div className="special-prizes">
-          {sortedSpecialPrizes.length > 0 ? sortedSpecialPrizes.map((p) => (
-            <div key={p.id} className="special-prize-pill" style={{position:'relative'}}>
-              <span>{renderLucideIcon(p.icon, <Star size={16} />, 16)}</span> {p.label}
-              {adminMode && <span style={{marginLeft:'8px', cursor:'pointer', color:'var(--color-accent)'}} onClick={()=>editRecord('hackathon-special-prizes', p)}>✎</span>}
-              {adminMode && <span style={{marginLeft:'8px', cursor:'pointer', color:'red'}} onClick={()=>deleteRecord('hackathon-special-prizes', p.id, setHkSpecialPrizes)}>×</span>}
-            </div>
-          )) : <p>No special prizes added.</p>}
-        </div>
-      </div>
-
-      {/* ── RULES + DATES ── */}
-      <div className="hk-grid-2">
-        <div className="hk-card">
-          <div className="hk-card-title">
-            <div className="hk-icon"><ClipboardList size={32} color="var(--color-brand-slate)" /></div>
-            <h3>Rules &amp; Guidelines</h3>
-            {adminMode && <button style={{marginLeft:'auto'}} type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-rules', 'create')}>+ Add Rule</button>}
-          </div>
-          <div className="rules-list">
-            {sortedRules.length > 0 ? sortedRules.map((rule, i) => (
-              <div key={rule.id} className="rule-item" style={{position:'relative', paddingRight: '60px'}}>
-                <span className="rule-num">{i + 1}</span>
-                <p>{rule.content}</p>
-                {adminMode && (
-                  <div style={{ position: 'absolute', top: '0', right: '0', display: 'flex', gap: '8px' }}>
-                    <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-rules', rule)}>Edit</button>
-                    <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-rules', rule.id, setHkRules)}>Del</button>
-                  </div>
-                )}
-              </div>
-            )) : <p>No rules added yet.</p>}
-          </div>
-        </div>
-
-        <div className="hk-card">
-          <div className="hk-card-title">
-            <div className="hk-icon"><Calendar size={32} color="var(--color-brand-orange)" /></div>
-            <h3>Important Dates</h3>
-            {adminMode && <button style={{marginLeft:'auto'}} type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-timeline', 'create')}>+ Add Date</button>}
-          </div>
-          <div className="dates-timeline">
-            {sortedTimeline.length > 0 ? sortedTimeline.map((d) => (
-              <div key={d.id} className="date-item" style={{position:'relative'}}>
-                {adminMode && (
-                  <div style={{ position: 'absolute', top: '0', right: '0', display: 'flex', gap: '8px' }}>
-                    <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-timeline', d)}>Edit</button>
-                    <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-timeline', d.id, setHkTimeline)}>Del</button>
-                  </div>
-                )}
-                <div className="date-dot-col">
-                  <div className={`date-dot ${d.status}`}></div>
-                </div>
-                <div className="date-info">
-                  <p className="date-label">{d.label}</p>
-                  <p className="date-value">{d.value}</p>
-                  <p className="date-desc">{d.description}</p>
-                </div>
-              </div>
-            )) : <p>No timeline dates added yet.</p>}
-          </div>
-        </div>
-      </div>
-
-      {/* ── HOW TO REGISTER / SUBMIT ── */}
-      <div className="hk-card">
-        <div className="hk-card-title">
-          <div className="hk-icon"><Rocket size={32} color="var(--color-brand-violet)" /></div>
-          <h3>How to Register &amp; Submit</h3>
-          {adminMode && <button style={{marginLeft:'auto'}} type="button" className="btn btn-admin-mini" onClick={() => openModal('hackathon-steps', 'create')}>+ Add Step</button>}
-        </div>
-        <div className="steps-list">
-          {sortedSteps.length > 0 ? sortedSteps.map((step, i) => (
-            <div key={step.id} className="step-item" style={{position:'relative', paddingRight: '60px'}}>
-              <div className="step-num">{i + 1}</div>
-              <div className="step-content">
-                <h4>{step.title}</h4>
-                <p>{step.description}</p>
-              </div>
-              {adminMode && (
-                <div style={{ position: 'absolute', top: '0', right: '0', display: 'flex', gap: '8px' }}>
-                  <button type="button" className="btn-icon" onClick={() => editRecord('hackathon-steps', step)}>Edit</button>
-                  <button type="button" className="btn-icon btn-delete" onClick={() => deleteRecord('hackathon-steps', step.id, setHkSteps)}>Del</button>
-                </div>
-              )}
-            </div>
-          )) : <p>No registration steps added yet.</p>}
-        </div>
-      </div>
-
-      {/* ── CTA STRIP ── */}
-      {siteConfig.registrationFormUrl && (
-        <div className="hackathon-cta-strip">
-          <div>
-            <h3>{siteConfig.hackathonCtaReady || 'Ready to Build?'}</h3>
-            <p>{siteConfig.hackathonCtaDesc || 'Registration is open until August 10, 2026. Spots are limited - secure your team today.'}</p>
-          </div>
-          <div className="actions-row">
-            <button type="button" className="btn btn-primary" onClick={() => window.open(siteConfig.registrationFormUrl, '_blank')}>
-              Register Your Team
-            </button>
-            <button type="button" className="btn btn-outline" onClick={() => navigateTo('contact')}>
-              Ask a Question
-            </button>
-          </div>
         </div>
       )}
-      </>
-      )}
 
+      {/* ── 7. PROBLEM STATEMENT MODAL ── */}
       {selectedTrack && (
-        <div className="admin-modal-backdrop" role="dialog" aria-modal="true" onClick={(e) => { if (e.target === e.currentTarget) setSelectedTrack(null) }} style={{ zIndex: 9999 }}>
-          <div className="admin-modal-panel glass-card">
-            <div className="admin-modal-header">
-              <h3 style={{ margin: 0, fontSize: '1.25rem' }}>{selectedTrack.title}</h3>
-              <button type="button" className="btn-close-modal" onClick={() => setSelectedTrack(null)} aria-label="Close dialog"><X size={20} /></button>
+        <div 
+          className="admin-modal-backdrop" 
+          role="dialog" 
+          aria-modal="true" 
+          onClick={(e) => { if (e.target === e.currentTarget) setSelectedTrack(null) }} 
+          style={{ zIndex: 9999 }}
+        >
+          <div className="hk-track-modal-panel">
+            <div className="hk-track-modal-header">
+              <div className="hk-modal-title-wrap">
+                <span className="hk-modal-tag">PROBLEM STATEMENT</span>
+                <h3 className="hk-modal-title">{selectedTrack.title}</h3>
+              </div>
+              <button 
+                type="button" 
+                className="btn-close-modal" 
+                onClick={() => setSelectedTrack(null)} 
+                aria-label="Close dialog"
+              >
+                <X size={22} />
+              </button>
             </div>
-            <div className="admin-modal-body" style={{ maxHeight: '60vh', overflowY: 'auto', padding: '20px 0', textAlign: 'left', display: 'flex', flexDirection: 'column' }}>
-              <div dangerouslySetInnerHTML={{ __html: selectedTrack.description }} className="track-description-html" style={{ lineHeight: '1.6' }} />
+            <div className="hk-track-modal-body">
+              <div 
+                dangerouslySetInnerHTML={{ __html: selectedTrack.description }} 
+                className="track-description-html" 
+              />
+            </div>
+            <div className="hk-track-modal-footer">
+              <button 
+                type="button" 
+                className="btn btn-outline" 
+                onClick={() => setSelectedTrack(null)}
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
@@ -362,3 +596,4 @@ export default function HackathonPage({
     </div>
   )
 }
+
