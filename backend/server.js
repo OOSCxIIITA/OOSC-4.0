@@ -68,7 +68,7 @@ app.use(
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   }),
 )
-app.use(express.json({ limit: '10kb' })) // Limit body size to prevent DoS
+app.use(express.urlencoded({ limit: '1mb', extended: true }));
 app.use(cookieParser())
 
 // ── XSS Sanitization Middleware ────────────────────────────────────────────────
