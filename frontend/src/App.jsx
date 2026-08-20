@@ -235,6 +235,7 @@ function App() {
     () => [
       'Title',
       'Co-Title',
+      'Hackathon Partners',
       'Platinum',
       'Gold',
       'Bronze',
