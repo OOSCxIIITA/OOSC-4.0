@@ -106,6 +106,10 @@
   --logo-size: 148px;
 }
 
+.sponsor-card--hackathon-partners {
+  --logo-size: 163px;
+}
+
 /* ---------------------- */
 /* Logo Box               */
 /* ---------------------- */
@@ -191,6 +195,10 @@
     --logo-size: 140px;
   }
 
+  .sponsor-card--hackathon-partners {
+    --logo-size: 154px;
+  }
+
   .sponsor-card-outer {
     width: min(100%, 220px);
     max-width: 220px;
@@ -253,6 +261,10 @@
     --logo-size: 120px;
   }
 
+  .sponsor-card--hackathon-partners {
+    --logo-size: 129px;
+  }
+
   .sponsor-name {
     font-size: 0.84rem;
   }
@@ -284,6 +296,10 @@
   .sponsor-card--bronze,
   .sponsor-card--supporter {
     --logo-size: 80px;
+  }
+
+  .sponsor-card--hackathon-partners {
+    --logo-size: 85px;
   }
 }
 
