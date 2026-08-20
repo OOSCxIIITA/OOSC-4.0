@@ -90,24 +90,27 @@
 }
 
 .sponsor-card--co-title {
-  --logo-size: 248px;
-}
-
-.sponsor-card--platinum {
-  --logo-size: 212px;
-}
-
-.sponsor-card--gold {
-  --logo-size: 176px;
-}
-
-.sponsor-card--bronze,
-.sponsor-card--supporter {
-  --logo-size: 148px;
+  --logo-size: 260px;
 }
 
 .sponsor-card--hackathon-partners {
-  --logo-size: 163px;
+  --logo-size: 230px;
+}
+
+.sponsor-card--platinum {
+  --logo-size: 205px;
+}
+
+.sponsor-card--gold {
+  --logo-size: 185px;
+}
+
+.sponsor-card--bronze {
+  --logo-size: 170px;
+}
+
+.sponsor-card--supporter {
+  --logo-size: 160px;
 }
 
 /* ---------------------- */
@@ -179,24 +182,27 @@
   }
 
   .sponsor-card--co-title {
-    --logo-size: 236px;
-  }
-
-  .sponsor-card--platinum {
-    --logo-size: 200px;
-  }
-
-  .sponsor-card--gold {
-    --logo-size: 168px;
-  }
-
-  .sponsor-card--bronze,
-  .sponsor-card--supporter {
-    --logo-size: 140px;
+    --logo-size: 250px;
   }
 
   .sponsor-card--hackathon-partners {
-    --logo-size: 154px;
+    --logo-size: 220px;
+  }
+
+  .sponsor-card--platinum {
+    --logo-size: 195px;
+  }
+
+  .sponsor-card--gold {
+    --logo-size: 175px;
+  }
+
+  .sponsor-card--bronze {
+    --logo-size: 160px;
+  }
+
+  .sponsor-card--supporter {
+    --logo-size: 150px;
   }
 
   .sponsor-card-outer {
@@ -241,28 +247,31 @@
   }
 
   .sponsor-card--title {
-    --logo-size: 240px;
+    --logo-size: 336px;
   }
 
   .sponsor-card--co-title {
-    --logo-size: 200px;
-  }
-
-  .sponsor-card--platinum {
-    --logo-size: 168px;
-  }
-
-  .sponsor-card--gold {
-    --logo-size: 144px;
-  }
-
-  .sponsor-card--bronze,
-  .sponsor-card--supporter {
-    --logo-size: 120px;
+    --logo-size: 300px;
   }
 
   .sponsor-card--hackathon-partners {
-    --logo-size: 129px;
+    --logo-size: 270px;
+  }
+
+  .sponsor-card--platinum {
+    --logo-size: 245px;
+  }
+
+  .sponsor-card--gold {
+    --logo-size: 225px;
+  }
+
+  .sponsor-card--bronze {
+    --logo-size: 210px;
+  }
+
+  .sponsor-card--supporter {
+    --logo-size: 195px;
   }
 
   .sponsor-name {
@@ -278,28 +287,31 @@
 @media (max-width: 480px) {
 
   .sponsor-card--title {
-    --logo-size: 160px;
+    --logo-size: 224px;
   }
 
   .sponsor-card--co-title {
-    --logo-size: 135px;
-  }
-
-  .sponsor-card--platinum {
-    --logo-size: 110px;
-  }
-
-  .sponsor-card--gold {
-    --logo-size: 95px;
-  }
-
-  .sponsor-card--bronze,
-  .sponsor-card--supporter {
-    --logo-size: 80px;
+    --logo-size: 200px;
   }
 
   .sponsor-card--hackathon-partners {
-    --logo-size: 85px;
+    --logo-size: 180px;
+  }
+
+  .sponsor-card--platinum {
+    --logo-size: 165px;
+  }
+
+  .sponsor-card--gold {
+    --logo-size: 155px;
+  }
+
+  .sponsor-card--bronze {
+    --logo-size: 145px;
+  }
+
+  .sponsor-card--supporter {
+    --logo-size: 135px;
   }
 }
 
