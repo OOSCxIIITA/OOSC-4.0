@@ -168,7 +168,7 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
             </div>
             <h1>{siteConfig.heroTitle || hero.title}</h1>
             <p className="hero-subtitle">
-              <span>Opportunity Open Source Conference hosted at </span>
+              <span>Created and initiated by <strong>OpenPrinting</strong>. Hosted at </span>
               <strong className="hero-location-highlight">IIIT Allahabad</strong>
               <span> in collaboration with </span>
               <strong className="hero-gdg-highlight">GDG On Campus IIITA</strong>

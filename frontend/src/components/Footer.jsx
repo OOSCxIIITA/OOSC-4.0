@@ -59,8 +59,10 @@ export default function Footer() {
 
         {/* Links Column 2 */}
         <div className="footer-links-column">
-          <h4>Academic Links</h4>
+          <h4>Academic &amp; Official Links</h4>
           <ul>
+            <li><a href="https://openprinting.github.io/opportunity-open-source" target="_blank" rel="noreferrer">OpenPrinting OOSC</a></li>
+            <li><a href="https://www.linkedin.com/company/opportunityopensource/" target="_blank" rel="noreferrer">OOSC LinkedIn</a></li>
             <li><a href="https://www.iiita.ac.in" target="_blank" rel="noreferrer">IIIT Allahabad</a></li>
             <li><a href="https://it.iiita.ac.in" target="_blank" rel="noreferrer">Department of IT</a></li>
             <li><a href="https://www.iiita.ac.in/research" target="_blank" rel="noreferrer">Research Labs</a></li>
