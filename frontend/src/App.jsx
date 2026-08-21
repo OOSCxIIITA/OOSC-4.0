@@ -246,6 +246,8 @@ function App() {
   const teamCategories = useMemo(
     () => [
       'Faculty Coordinators',
+      'Event Chairs',
+      'Producer for Streaming & Recording',
       'Student Coordinators',
       'Technical Team',
       'Event and Management',
@@ -294,6 +296,8 @@ function App() {
   const categorizedTeam = useMemo(() => {
     const groups = {
       'Faculty Coordinators': [],
+      'Event Chairs': [],
+      'Producer for Streaming & Recording': [],
       'Student Coordinators': [],
       'Technical Team': [],
       'Event and Management': [],

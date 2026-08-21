@@ -63,7 +63,7 @@ export default function TeamPage({
         {Object.entries(categorizedTeam).map(([categoryName, members]) => {
           if (members.length === 0 && !adminMode) return null
           return (
-            <div key={categoryName} className="team-category-section">
+            <div key={categoryName} className={`team-category-section team-category-${categoryName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
               <h3 className="team-category-title">{categoryName}</h3>
               <div className="team-grid">
                 {members.map((member, index) => (
