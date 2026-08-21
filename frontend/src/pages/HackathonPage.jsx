@@ -166,22 +166,6 @@ export default function HackathonPage({
         <div className="hackathon-content-container">
           
           {/* ── GOOGLE TECHNOLOGY FOCUS ── */}
-          <section className="hk-card hk-section-google-focus" style={{ borderLeft: '4px solid #4285f4', backgroundColor: 'rgba(66, 133, 244, 0.04)' }}>
-            <div className="hk-card-header" style={{ borderBottom: '1px solid rgba(66, 133, 244, 0.1)' }}>
-              <div className="hk-title-group">
-                <div className="hk-icon"><Star size={22} color="#4285f4" /></div>
-                <h2 className="hk-section-heading" style={{ color: '#4285f4' }}>Google Technology Focus</h2>
-              </div>
-            </div>
-            <div style={{ padding: '1.5rem', paddingTop: '1.25rem' }}>
-              <p style={{ color: 'var(--color-text-bright)', lineHeight: '1.6', marginBottom: '0.75rem', fontSize: '1.05rem' }}>
-                We are actively encouraging the adoption of <strong>Google technologies</strong> and the modern Google developer ecosystem throughout the hackathon.
-              </p>
-              <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
-                Participants are encouraged to explore tools such as <strong>Google Antigravity, Gemini, Gemini APIs, Google AI Studio, Firebase</strong>, and other Google developer technologies while building their solutions. Leverage these powerful tools to build innovative and scalable projects!
-              </p>
-            </div>
-          </section>
 
           {/* ── 2. WHO CAN PARTICIPATE (FULL WIDTH COMPACT) ── */}
           <section className="hk-card hk-section-participation">
@@ -324,6 +308,22 @@ export default function HackathonPage({
 
             <div className="hk-footnote">
               <p>All solutions must be open-source, reproducible, and include a live demo or working prototype.</p>
+            </div>
+          </section>
+          <section className="hk-card hk-section-google-focus" style={{ borderLeft: '4px solid #4285f4', backgroundColor: 'rgba(66, 133, 244, 0.04)' }}>
+            <div className="hk-card-header" style={{ borderBottom: '1px solid rgba(66, 133, 244, 0.1)' }}>
+              <div className="hk-title-group">
+                <div className="hk-icon"><Star size={22} color="#4285f4" /></div>
+                <h2 className="hk-section-heading" style={{ color: '#4285f4' }}>Google Technology Focus</h2>
+              </div>
+            </div>
+            <div style={{ padding: '1.5rem', paddingTop: '1.25rem' }}>
+              <p style={{ color: 'var(--color-text-bright)', lineHeight: '1.6', marginBottom: '0.75rem', fontSize: '1.05rem' }}>
+                We are actively encouraging the adoption of <strong>Google technologies</strong> and the modern Google developer ecosystem throughout the hackathon.
+              </p>
+              <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
+                Participants are encouraged to explore tools such as <strong>Google Antigravity, Gemini, Gemini APIs, Google AI Studio, Firebase</strong>, and other Google developer technologies while building their solutions. Leverage these powerful tools to build innovative and scalable projects!
+              </p>
             </div>
           </section>
 
