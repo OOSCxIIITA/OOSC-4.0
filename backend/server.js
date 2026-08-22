@@ -524,6 +524,154 @@ app.post('/api/upload', authMiddleware, upload.single('file'), (req, res) => {
   res.json({ url: fileUrl })
 })
 
+// ── Chunked upload endpoints ───────────────────────────────────────────────────
+
+// Temporary directory for chunked uploads
+const chunkUploadDir = process.env.VERCEL ? '/tmp/chunked-uploads' : path.join(__dirname, 'chunked-uploads')
+
+// Ensure chunk upload directory exists
+try {
+  if (!fs.existsSync(chunkUploadDir)) {
+    fs.mkdirSync(chunkUploadDir, { recursive: true })
+  }
+} catch (e) {
+  console.warn('Could not create chunk upload directory:', e.message)
+}
+
+// Multer config for chunk uploads (smaller limit per chunk)
+const chunkUpload = multer({
+  storage: multer.diskStorage({
+    destination: chunkUploadDir,
+    filename: (req, file, cb) => {
+      // Use a temporary name; we'll rename after getting req.body
+      cb(null, `temp-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`)
+    },
+  }),
+  limits: { fileSize: 1024 * 1024 }, // 1 MB max per chunk
+  fileFilter: (req, file, cb) => {
+    const allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/octet-stream']
+    if (allowed.includes(file.mimetype)) {
+      cb(null, true)
+    } else {
+      cb(new Error('Only image files are allowed.'))
+    }
+  },
+})
+
+// Upload a single chunk
+app.post('/api/upload/chunk', authMiddleware, chunkUpload.single('chunk'), (req, res) => {
+  console.log('Chunk upload request:', { 
+    file: req.file ? { originalname: req.file.originalname, size: req.file.size, path: req.file.path } : null,
+    body: req.body 
+  })
+
+  if (!req.file) {
+    return res.status(400).json({ error: 'No chunk uploaded.' })
+  }
+
+  const { uploadId, chunkIndex, totalChunks, isLast } = req.body
+
+  if (!uploadId || chunkIndex === undefined || totalChunks === undefined) {
+    // Clean up the temp file
+    fs.unlinkSync(req.file.path)
+    return res.status(400).json({ error: 'Missing required fields: uploadId, chunkIndex, totalChunks' })
+  }
+
+  // Rename the temp file to the proper chunk name
+  const chunkFileName = `${uploadId}-chunk-${chunkIndex}`
+  const chunkFilePath = path.join(chunkUploadDir, chunkFileName)
+  
+  try {
+    fs.renameSync(req.file.path, chunkFilePath)
+  } catch (e) {
+    console.error('Failed to rename chunk file:', e)
+    return res.status(500).json({ error: 'Failed to save chunk.' })
+  }
+
+  console.log('Chunk saved:', chunkFilePath)
+
+  res.json({ 
+    success: true, 
+    chunkIndex: parseInt(chunkIndex),
+    totalChunks: parseInt(totalChunks)
+  })
+})
+
+// Finalize chunked upload
+app.post('/api/upload/finalize', authMiddleware, async (req, res) => {
+  const { uploadId, fileName, fileType, totalChunks } = req.body
+
+  console.log('Finalize request:', { uploadId, fileName, fileType })
+
+  if (!uploadId || !fileName || !fileType) {
+    return res.status(400).json({ error: 'Missing required fields: uploadId, fileName, fileType' })
+  }
+
+  // Reassemble file
+  const finalFileName = `${Date.now()}-${fileName.replace(/[^a-zA-Z0-9.\-_]/g, '_')}`
+  const finalFilePath = path.join(uploadDir, finalFileName)
+
+  // Ensure upload directory exists
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true })
+  }
+
+  const totalChunkCount = Number.parseInt(totalChunks, 10)
+
+  if (!Number.isInteger(totalChunkCount) || totalChunkCount <= 0) {
+    return res.status(400).json({ error: 'Missing or invalid totalChunks.' })
+  }
+
+  console.log('Reassembling file:', finalFilePath)
+  console.log('Total chunks:', totalChunkCount)
+
+  try {
+    const chunkBuffers = []
+
+    for (let i = 0; i < totalChunkCount; i++) {
+      const chunkPath = path.join(chunkUploadDir, `${uploadId}-chunk-${i}`)
+      console.log('Looking for chunk:', chunkPath, 'exists:', fs.existsSync(chunkPath))
+      if (!fs.existsSync(chunkPath)) {
+        return res.status(400).json({ error: `Chunk ${i} not found on disk` })
+      }
+
+      const chunkData = fs.readFileSync(chunkPath)
+      console.log('Chunk', i, 'size:', chunkData.length)
+      chunkBuffers.push(chunkData)
+
+      // Clean up chunk file
+      fs.unlinkSync(chunkPath)
+    }
+
+    const completeBuffer = Buffer.concat(chunkBuffers)
+    fs.writeFileSync(finalFilePath, completeBuffer)
+
+    // Verify file exists after write
+    console.log('File written, exists:', fs.existsSync(finalFilePath), 'size:', fs.existsSync(finalFilePath) ? fs.statSync(finalFilePath).size : 0)
+
+    // Upload to Cloudinary if configured, otherwise return local path
+    let fileUrl
+    if (process.env.CLOUDINARY_CLOUD_NAME && process.env.CLOUDINARY_API_KEY && process.env.CLOUDINARY_API_SECRET) {
+      const result = await cloudinary.uploader.upload(finalFilePath, {
+        folder: 'oosc-4.0',
+        resource_type: 'image',
+      })
+      fileUrl = result.secure_url
+      // Clean up local file after Cloudinary upload
+      fs.unlinkSync(finalFilePath)
+    } else {
+      fileUrl = `/uploads/${finalFileName}`
+    }
+
+    res.json({ url: fileUrl })
+  } catch (error) {
+    console.error('Finalize upload error:', error)
+    // Cleanup on error
+    if (fs.existsSync(finalFilePath)) fs.unlinkSync(finalFilePath)
+    res.status(500).json({ error: 'Failed to finalize upload.' })
+  }
+})
+
 // ── Contact form ───────────────────────────────────────────────────────────────
 
 // Configure nodemailer transporter
