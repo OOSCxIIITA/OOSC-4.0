@@ -4,6 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import './index.css'
 import App from './App.jsx'
+import { initPostHog } from './posthog.js'
+
+initPostHog()
+
 
 const rootElement = document.getElementById('root')
 

@@ -16,6 +16,7 @@ const AdminLoginPage = lazy(() => import('./pages/AdminLoginPage.jsx'))
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage.jsx'))
 const TermsOfUsePage = lazy(() => import('./pages/TermsOfUsePage.jsx'))
 const AboutPage = lazy(() => import('./pages/aboutpage.jsx'))
+const AnalyticsPage = lazy(() => import('./pages/AnalyticsPage.jsx'))
 
 import ChatBot from './components/ChatBot.jsx'
 import {
@@ -35,6 +36,7 @@ import './pages/ContactPage.css'
 import './pages/AdminLoginPage.css'
 import './pages/PolicyPage.css'
 import './pages/aboutpage.css'
+import './pages/AnalyticsPage.css'
 
 const loadFromStorage = (key, fallback) => {
   try {
@@ -1208,6 +1210,7 @@ function App() {
                   handleLogin={handleLogin} adminMessage={adminMessage}
                 />
               } />
+              <Route path="/analytics" element={<AnalyticsPage adminMode={adminMode} />} />
               <Route path="/privacy" element={<PrivacyPolicyPage />} />
               <Route path="/terms" element={<TermsOfUsePage />} />
             </Routes>
