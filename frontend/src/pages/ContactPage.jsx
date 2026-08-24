@@ -57,7 +57,7 @@ export default function ContactPage({ siteConfig, form, setForm, formStatus, han
             <div className="channel-icon"><Mail size={32} /></div>
             <h3>Official Email</h3>
             <p className="channel-desc">For general inquiries, sponsorships, and speaker submissions.</p>
-            <div className="channel-value">oosc@iita.ac.in</div>
+            <div className="channel-value">oosc@iiita.ac.in</div>
           </div>
 
           <div className="channel-card glass-card">
