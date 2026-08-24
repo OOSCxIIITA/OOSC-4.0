@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import {
   Users, Activity, Clock, ArrowUpRight, ArrowDownRight,
   Eye, ArrowLeft, MonitorPlay, ChevronDown, CheckCircle2, Copy, AlertCircle,
-  BarChart3, LayoutDashboard
+  BarChart3, LayoutDashboard, LogOut
 } from 'lucide-react'
 import './AnalyticsPage.css'
 
