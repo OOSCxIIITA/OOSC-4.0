@@ -48,8 +48,17 @@ const loadFromStorage = (key, fallback) => {
 }
 
 function App() {
-  const [adminMode, setAdminMode] = useState(false)
-  const [adminEmail, setAdminEmail] = useState('')
+  const [adminMode, setAdminMode] = useState(() => loadFromStorage('oosc-admin-mode', false))
+  const [adminEmail, setAdminEmail] = useState(() => loadFromStorage('oosc-admin-email', ''))
+
+  useEffect(() => {
+    localStorage.setItem('oosc-admin-mode', JSON.stringify(adminMode))
+  }, [adminMode])
+
+  useEffect(() => {
+    localStorage.setItem('oosc-admin-email', JSON.stringify(adminEmail))
+  }, [adminEmail])
+
   const [theme, setTheme] = useState(() => {
     const stored = localStorage.getItem('oosc-theme')
     return stored === 'light' ? 'bright' : (stored || 'dark')

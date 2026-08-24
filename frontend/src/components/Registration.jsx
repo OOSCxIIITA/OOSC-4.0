@@ -100,21 +100,19 @@ export default function Registration({ siteConfig = {}, registrationCards = [], 
 
           {/* Ticket Booking Right Side */}
           <div className="contact-form-panel glass-card registration-form-panel" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '60px 40px', textAlign: 'center' }}>
-            <h3 style={{ color: 'var(--color-accent)', marginBottom: '15px', fontSize: '2rem' }}>Official Ticketing Partner</h3>
+            <h3 style={{ color: 'var(--color-accent)', marginBottom: '15px', fontSize: '2rem' }}>Tickets Sold Out!</h3>
             <p style={{ color: 'var(--color-text-warm)', marginBottom: '30px', fontSize: '1.1rem', maxWidth: '400px' }}>
-              We have partnered with KonfHub to provide you with a smooth and secure registration experience. Grab your pass now!
+              Thank you for the overwhelming response! All passes for OOSC 4.0 are currently sold out.
             </p>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '100%', maxWidth: '300px' }}>
-              <a 
-                href="https://konfhub.com/oosc"
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn"
-                style={{ width: '100%', padding: '16px 20px', fontSize: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', borderRadius: '8px', textDecoration: 'none', background: 'var(--color-accent)', color: '#000', fontWeight: 'bold' }}
+              <button 
+                disabled
+                className="btn btn-disabled"
+                style={{ width: '100%', padding: '16px 20px', fontSize: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', borderRadius: '8px', textDecoration: 'none', background: '#334155', color: '#94a3b8', fontWeight: 'bold', cursor: 'not-allowed', border: 'none' }}
               >
-                Buy Regular Pass <ExternalLink size={20} />
-              </a>
+                Sold Out
+              </button>
             </div>
           </div>
         </div>
