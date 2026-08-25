@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Mic, Star, ArrowRight, Clock, RotateCcw } from 'lucide-react'
+import { Mic, Star, ArrowRight, Clock, RotateCcw, Building2, UserCheck, Car, Plane, TrainFront } from 'lucide-react'
 import './SpeakersPage.css'
 
 // Default proposal submission deadline: 14 Aug 2026, 11:59:59 PM IST
@@ -208,6 +208,64 @@ export default function SpeakersPage({
             )}
           </article>
         ))}
+      </div>
+
+      {/* ── Accommodation & Travel Info for Speakers ── */}
+      <div className="speaker-accommodation-section">
+        <div className="accommodation-header">
+          <h2>Accommodation & Travel</h2>
+          <p>Everything you need to know about your stay and transit during OOSC 4.0</p>
+        </div>
+
+        <div className="accommodation-cards">
+          <div className="accommodation-card glass-card">
+            <div className="accommodation-card-icon">
+              <Building2 size={28} />
+            </div>
+            <div className="accommodation-card-body">
+              <h3>Visitor Hostel</h3>
+              <p>
+                The institute will provide accommodation for speakers in the <strong>Visitor Hostel</strong> on campus.
+                Rooms will be arranged by the organising committee to ensure a comfortable stay throughout the event.
+              </p>
+            </div>
+          </div>
+
+          <div className="accommodation-card glass-card">
+            <div className="accommodation-card-icon icon-poc">
+              <UserCheck size={28} />
+            </div>
+            <div className="accommodation-card-body">
+              <h3>Point of Contact</h3>
+              <p>
+                Each speaker will be assigned a <strong>dedicated Point of Contact (PoC)</strong> who will share
+                room details, check-in instructions, and assist with any on-ground coordination during your visit.
+              </p>
+            </div>
+          </div>
+
+          <div className="accommodation-card glass-card">
+            <div className="accommodation-card-icon icon-transport">
+              <Car size={28} />
+            </div>
+            <div className="accommodation-card-body">
+              <h3>Pickup & Drop Facility</h3>
+              <p>
+                Complimentary pickup and drop service will be provided by the institute from:
+              </p>
+              <div className="transport-routes">
+                <div className="transport-route">
+                  <TrainFront size={18} />
+                  <span>Prayagraj Junction (Railway Station)</span>
+                </div>
+                <div className="transport-route">
+                  <Plane size={18} />
+                  <span>Prayagraj Airport</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {adminMode && (
