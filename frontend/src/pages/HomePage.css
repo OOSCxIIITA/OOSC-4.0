@@ -20,7 +20,7 @@
 }
 
 .hero-section::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: var(--color-bg);
@@ -34,7 +34,12 @@
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(14, 165, 233, 0.05) 50%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.15) 0%,
+    rgba(14, 165, 233, 0.05) 50%,
+    transparent 70%
+  );
   top: -150px;
   right: -150px;
   filter: blur(90px);
@@ -44,12 +49,17 @@
 }
 
 .hero-glow-blob::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 450px;
   height: 450px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(14, 165, 233, 0.03) 60%, transparent 80%);
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.12) 0%,
+    rgba(14, 165, 233, 0.03) 60%,
+    transparent 80%
+  );
   bottom: -80px;
   left: -80px;
   filter: blur(70px);
@@ -214,6 +224,11 @@
   margin-top: 10px;
 }
 
+.pop {
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 /* ─── COUNTDOWN TIMER - HIGHLIGHTED CENTERPIECE ─────────────────────────────── */
 .hero-countdown {
   display: flex;
@@ -224,7 +239,12 @@
   padding: 32px 40px;
   border-radius: var(--radius-card);
   margin: 20px 0;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(11, 17, 32, 0.7) 40%, rgba(14, 165, 233, 0.06) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.08) 0%,
+    rgba(11, 17, 32, 0.7) 40%,
+    rgba(14, 165, 233, 0.06) 100%
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid rgba(14, 165, 233, 0.35);
@@ -262,18 +282,20 @@
 
 /* Shimmer sweep across the countdown */
 .hero-countdown::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-      transparent 0%,
-      rgba(14, 165, 233, 0.06) 40%,
-      rgba(14, 165, 233, 0.12) 50%,
-      rgba(14, 165, 233, 0.06) 60%,
-      transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(14, 165, 233, 0.06) 40%,
+    rgba(14, 165, 233, 0.12) 50%,
+    rgba(14, 165, 233, 0.06) 60%,
+    transparent 100%
+  );
   animation: countdown-shimmer 6s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
@@ -291,19 +313,24 @@
 
 /* Accent glow line at the top edge */
 .hero-countdown::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 10%;
   right: 10%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-accent),
+    transparent
+  );
   opacity: 0.7;
   z-index: 2;
 }
 
 .countdown-header {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.9rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -334,10 +361,10 @@
 .countdown-value {
   display: flex;
   gap: 6px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(2.8rem, 5.5vw, 3.6rem);
   font-weight: 700;
-  color: #F8FAFC;
+  color: #f8fafc;
   line-height: 1.2em;
 }
 
@@ -350,7 +377,7 @@
   line-height: 1.2em;
   perspective: 150px;
   border-radius: 8px;
-  background: #080C18;
+  background: #080c18;
   box-shadow:
     0 4px 20px rgba(0, 0, 0, 0.6),
     0 0 12px rgba(14, 165, 233, 0.1),
@@ -360,7 +387,7 @@
 }
 
 .countdown-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.85rem;
   text-transform: uppercase;
   color: rgba(14, 165, 233, 0.7);
@@ -370,7 +397,7 @@
 }
 
 .countdown-divider {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: clamp(2rem, 4.5vw, 2.8rem);
   font-weight: 700;
   color: var(--color-accent);
@@ -382,7 +409,6 @@
 }
 
 @keyframes divider-blink {
-
   0%,
   100% {
     opacity: 0.8;
@@ -394,21 +420,42 @@
 }
 
 .countdown-finished {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
   font-weight: 700;
   color: var(--color-accent);
   margin: 20px 0;
-  padding: 28px 40px;
-  border: 2px solid var(--color-accent);
+  padding: 24px 20px;
+  border: 2px solid rgba(14, 165, 233, 0.7);
   border-radius: var(--radius-card);
   width: 100%;
   text-align: center;
+  box-sizing: border-box;
   box-shadow:
     0 0 30px var(--color-accent-glow),
     0 0 60px rgba(14, 165, 233, 0.1);
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(11, 17, 32, 0.6) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.08) 0%,
+    rgba(11, 17, 32, 0.6) 100%
+  );
   animation: countdown-glow-pulse 3s ease-in-out infinite alternate;
+}
+
+.countdown-finished .pop {
+  flex-shrink: 0;
+}
+
+.countdown-finished > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4;
 }
 
 /* Base styles for the card halves */
@@ -430,7 +477,7 @@
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  background: linear-gradient(to bottom, #161C2E 0%, #0D1120 100%);
+  background: linear-gradient(to bottom, #161c2e 0%, #0d1120 100%);
 }
 
 /* Bottom half styles */
@@ -440,13 +487,13 @@
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(to bottom, #0A0E1A 0%, #101828 100%);
+  background: linear-gradient(to bottom, #0a0e1a 0%, #101828 100%);
 }
 
 /* Shadows on flipping cards */
 .flip-card-static::after,
 .flip-card-animated::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -458,22 +505,38 @@
 
 /* Top flip shadow: gets darker as it flips down */
 .top-flip::after {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
 }
 
 /* Bottom flip shadow: starts dark, gets lighter as it finishes swinging */
 .bottom-flip::after {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 /* Static bottom card shadow: gets a shadow cast on it by falling card, then covers it */
 .bottom-static::after {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
 }
 
 /* Static top card shadow: starts in shadow when revealed, then lightens */
 .top-static::after {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.95) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
 }
 
 /* Inner span that holds the text */
@@ -530,16 +593,19 @@
 }
 
 .animate-bottom {
-  animation: flip-bottom-anim 0.28s cubic-bezier(0.215, 0.61, 0.355, 1) 0.28s forwards;
+  animation: flip-bottom-anim 0.28s cubic-bezier(0.215, 0.61, 0.355, 1) 0.28s
+    forwards;
   /* ease-out-cubic with delay */
 }
 
 .animate-top::after {
-  animation: shadow-top-anim 0.28s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+  animation: shadow-top-anim 0.28s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+    forwards;
 }
 
 .animate-bottom::after {
-  animation: shadow-bottom-anim 0.28s cubic-bezier(0.215, 0.61, 0.355, 1) 0.28s forwards;
+  animation: shadow-bottom-anim 0.28s cubic-bezier(0.215, 0.61, 0.355, 1) 0.28s
+    forwards;
 }
 
 .flipping .bottom-static::after {
@@ -628,8 +694,6 @@
   transform: translateY(-50%);
 }
 
-
-
 /* Responsive countdown */
 @media (max-width: 580px) {
   .hero-countdown {
@@ -648,11 +712,28 @@
   .countdown-header {
     font-size: 0.82rem;
   }
+
+  .countdown-finished {
+    gap: 10px;
+    padding: 18px 14px;
+    font-size: clamp(1rem, 5vw, 1.35rem);
+    letter-spacing: 0.02em;
+  }
+
+  .countdown-finished .pop {
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* ─── LIGHT-MODE COUNTDOWN OVERRIDES ────────────────────────────────────────── */
 :root[data-theme="bright"] .hero-countdown {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.06) 0%, rgba(255, 255, 255, 0.9) 40%, rgba(14, 165, 233, 0.04) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.06) 0%,
+    rgba(255, 255, 255, 0.9) 40%,
+    rgba(14, 165, 233, 0.04) 100%
+  );
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1.5px solid rgba(14, 165, 233, 0.3);
@@ -671,20 +752,20 @@
 }
 
 :root[data-theme="bright"] .flip-digit-container {
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid rgba(14, 165, 233, 0.2);
   box-shadow: 0 4px 12px rgba(14, 165, 233, 0.08);
 }
 
 :root[data-theme="bright"] .top-static,
 :root[data-theme="bright"] .top-flip {
-  background: #FFFFFF;
+  background: #ffffff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 :root[data-theme="bright"] .bottom-static,
 :root[data-theme="bright"] .bottom-flip {
-  background: #F8FAFC;
+  background: #f8fafc;
   border-top: 1px solid rgba(255, 255, 255, 0.8);
 }
 
@@ -699,7 +780,7 @@
 }
 
 :root[data-theme="bright"] .countdown-label {
-  color: #0369A1;
+  color: #0369a1;
 }
 
 :root[data-theme="bright"] .countdown-header {
@@ -778,7 +859,6 @@
   padding: 18px 20px;
   border-radius: var(--radius-btn);
   background: var(--color-panel-surface);
-
 }
 
 .highlight-pill p {
@@ -826,7 +906,7 @@
 }
 
 .stat-card-gradient::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -838,16 +918,20 @@
 .stat-card-gradient:hover {
   border-color: var(--color-accent);
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(13, 148, 136, 0.1), var(--shadow-float);
+  box-shadow:
+    0 8px 20px rgba(13, 148, 136, 0.1),
+    var(--shadow-float);
 }
 
 .stat-card-gradient:active {
   transform: translateY(0px);
-  box-shadow: 0px 4px 10px rgba(13, 148, 136, 0.05), var(--shadow-panel);
+  box-shadow:
+    0px 4px 10px rgba(13, 148, 136, 0.05),
+    var(--shadow-panel);
 }
 
 .stat-card-gradient h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-accent);
@@ -859,7 +943,7 @@
   color: var(--color-text-muted-strong);
   font-size: 0.88rem;
   font-weight: 600;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -1128,7 +1212,6 @@
 
   .stat-card-gradient {
     padding: 16px;
-
   }
 
   .stat-card-gradient h3 {

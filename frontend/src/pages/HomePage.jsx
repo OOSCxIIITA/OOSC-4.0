@@ -1,9 +1,19 @@
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
-import { Calendar, MapPin, Check, Mic, Settings, Zap, Handshake, Globe } from 'lucide-react'
-import './HomePage.css'
+import React from "react";
+import { Helmet } from "react-helmet-async";
+import {
+  Calendar,
+  MapPin,
+  Check,
+  Mic,
+  Settings,
+  Zap,
+  Handshake,
+  Globe,
+  PartyPopper,
+} from "lucide-react";
+import "./HomePage.css";
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
 function FlipDigit({ digit }) {
   const [current, setCurrent] = useState(digit);
@@ -24,7 +34,7 @@ function FlipDigit({ digit }) {
   };
 
   return (
-    <div className={`flip-digit-container ${isFlipping ? 'flipping' : ''}`}>
+    <div className={`flip-digit-container ${isFlipping ? "flipping" : ""}`}>
       {/* Static Top */}
       <div className="flip-card-static top-static">
         <span className="flip-digit-inner">{current}</span>
@@ -35,13 +45,15 @@ function FlipDigit({ digit }) {
       </div>
 
       {/* Flipping Card Top */}
-      <div className={`flip-card-animated top-flip ${isFlipping ? 'animate-top' : ''}`}>
+      <div
+        className={`flip-card-animated top-flip ${isFlipping ? "animate-top" : ""}`}
+      >
         <span className="flip-digit-inner">{previous}</span>
       </div>
 
       {/* Flipping Card Bottom */}
       <div
-        className={`flip-card-animated bottom-flip ${isFlipping ? 'animate-bottom' : ''}`}
+        className={`flip-card-animated bottom-flip ${isFlipping ? "animate-bottom" : ""}`}
         onAnimationEnd={handleAnimationEnd}
       >
         <span className="flip-digit-inner">{current}</span>
@@ -84,14 +96,19 @@ function CountdownTimer() {
   }, []);
 
   if (timeLeft.isOver) {
-    return <div className="countdown-finished">🎉 The Conference has Started!</div>;
+    return (
+      <div className="countdown-finished ">
+        <PartyPopper size={40} className="pop" />
+        <div>The Conference has Started!</div>
+      </div>
+    );
   }
 
   const units = [
-    { value: timeLeft.days, label: 'Days' },
-    { value: timeLeft.hours, label: 'Hours' },
-    { value: timeLeft.minutes, label: 'Mins' },
-    { value: timeLeft.seconds, label: 'Secs' },
+    { value: timeLeft.days, label: "Days" },
+    { value: timeLeft.hours, label: "Hours" },
+    { value: timeLeft.minutes, label: "Mins" },
+    { value: timeLeft.seconds, label: "Secs" },
   ];
 
   return (
@@ -103,9 +120,12 @@ function CountdownTimer() {
             {i > 0 && <div className="countdown-divider">:</div>}
             <div className="countdown-item">
               <span className="countdown-value">
-                {String(unit.value).padStart(2, '0').split('').map((digit, idx) => (
-                  <FlipDigit key={idx} digit={digit} />
-                ))}
+                {String(unit.value)
+                  .padStart(2, "0")
+                  .split("")
+                  .map((digit, idx) => (
+                    <FlipDigit key={idx} digit={digit} />
+                  ))}
               </span>
               <span className="countdown-label">{unit.label}</span>
             </div>
@@ -120,22 +140,52 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
     <>
       <Helmet>
         <title>OOSC 4.0 - Opportunity Open Source Conference</title>
-        <meta name="description" content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons." />
-        <meta name="keywords" content="OOSC 4.0, Opportunity Open Source Conference, IIIT Allahabad, open source, hackathon, workshops, tech conference India, Prayagraj" />
+        <meta
+          name="description"
+          content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons."
+        />
+        <meta
+          name="keywords"
+          content="OOSC 4.0, Opportunity Open Source Conference, IIIT Allahabad, open source, hackathon, workshops, tech conference India, Prayagraj"
+        />
         <link rel="canonical" href="https://oosc.iiita.ac.in/" />
-        <meta property="og:title" content="OOSC 4.0 - Opportunity Open Source Conference" />
-        <meta property="og:description" content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons." />
+        <meta
+          property="og:title"
+          content="OOSC 4.0 - Opportunity Open Source Conference"
+        />
+        <meta
+          property="og:description"
+          content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons."
+        />
         <meta property="og:url" content="https://oosc.iiita.ac.in/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
+        <meta
+          property="og:image"
+          content="https://oosc.iiita.ac.in/OOSC_logo.png"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="OOSC 4.0 Opportunity Open Source Conference logo" />
+        <meta
+          property="og:image:alt"
+          content="OOSC 4.0 Opportunity Open Source Conference logo"
+        />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="OOSC 4.0 - Opportunity Open Source Conference | IIIT Allahabad" />
-        <meta name="twitter:description" content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons." />
-        <meta name="twitter:image" content="https://oosc.iiita.ac.in/OOSC_logo.png" />
-        <meta name="twitter:image:alt" content="OOSC 4.0 Opportunity Open Source Conference logo" />
+        <meta
+          name="twitter:title"
+          content="OOSC 4.0 - Opportunity Open Source Conference | IIIT Allahabad"
+        />
+        <meta
+          name="twitter:description"
+          content="Join OOSC 4.0, the Opportunity Open Source Conference at IIIT Allahabad (Aug 28-30, 2026) for expert talks, workshops, and hackathons."
+        />
+        <meta
+          name="twitter:image"
+          content="https://oosc.iiita.ac.in/OOSC_logo.png"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="OOSC 4.0 Opportunity Open Source Conference logo"
+        />
       </Helmet>
       {/* Hero Section */}
       <section className="hero-section" id="home">
@@ -144,14 +194,42 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
           <div className="hero-copy">
             {/* Host Institute & Organizer Branding Badges */}
             <div className="hero-host-partner-badge">
-              <a href="https://iiita.ac.in" target="_blank" rel="noopener noreferrer" className="hero-partner-chip" title="IIIT Allahabad - Host Institute">
-                <img src="/IIIT_logo_transparent.gif" alt="IIIT Allahabad logo" className="hero-chip-icon" width="24" height="24" />
-                <span>Hosted by <strong>IIIT Allahabad</strong></span>
+              <a
+                href="https://iiita.ac.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-partner-chip"
+                title="IIIT Allahabad - Host Institute"
+              >
+                <img
+                  src="/IIIT_logo_transparent.gif"
+                  alt="IIIT Allahabad logo"
+                  className="hero-chip-icon"
+                  width="24"
+                  height="24"
+                />
+                <span>
+                  Hosted by <strong>IIIT Allahabad</strong>
+                </span>
               </a>
               <span className="hero-chip-divider">•</span>
-              <a href="https://gdsc.iiita.ac.in" target="_blank" rel="noopener noreferrer" className="hero-partner-chip" title="GDG On Campus IIITA - Community Partner">
-                <img src="/gdglogo.png" alt="GDG logo" className="hero-chip-icon" width="24" height="24" />
-                <span>Organized with <strong>GDG IIITA</strong></span>
+              <a
+                href="https://gdsc.iiita.ac.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-partner-chip"
+                title="GDG On Campus IIITA - Community Partner"
+              >
+                <img
+                  src="/gdglogo.png"
+                  alt="GDG logo"
+                  className="hero-chip-icon"
+                  width="24"
+                  height="24"
+                />
+                <span>
+                  Organized with <strong>GDG IIITA</strong>
+                </span>
               </a>
             </div>
 
@@ -168,10 +246,17 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
             </div>
             <h1>{siteConfig.heroTitle || hero.title}</h1>
             <p className="hero-subtitle">
-              <span>Created and initiated by <strong>OpenPrinting</strong>. Hosted at </span>
-              <strong className="hero-location-highlight">IIIT Allahabad</strong>
+              <span>
+                Created and initiated by <strong>OpenPrinting</strong>. Hosted
+                at{" "}
+              </span>
+              <strong className="hero-location-highlight">
+                IIIT Allahabad
+              </strong>
               <span> in collaboration with </span>
-              <strong className="hero-gdg-highlight">GDG On Campus IIITA</strong>
+              <strong className="hero-gdg-highlight">
+                GDG On Campus IIITA
+              </strong>
             </p>
             <p className="hero-description">{hero.bannerText}</p>
             <CountdownTimer />
@@ -179,14 +264,14 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
               <button
                 type="button"
                 className="btn btn-primary"
-                onClick={() => navigateTo('register')}
+                onClick={() => navigateTo("register")}
               >
                 {hero.cta}
               </button>
               <button
                 type="button"
                 className="btn btn-outline"
-                onClick={() => navigateTo('speakers')}
+                onClick={() => navigateTo("speakers")}
               >
                 Explore Key Speakers
               </button>
@@ -199,14 +284,18 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
       <section className="hero-transitional-details" id="home-details">
         <div className="transitional-grid">
           <div className="transitional-info-card glass-card">
-            <span className="meta-icon"><Calendar size={24} color="var(--color-brand-yellow)" /></span>
+            <span className="meta-icon">
+              <Calendar size={24} color="var(--color-brand-yellow)" />
+            </span>
             <div>
               <h4>Conference Dates</h4>
               <p>{hero.dates}</p>
             </div>
           </div>
           <div className="transitional-info-card glass-card">
-            <span className="meta-icon"><MapPin size={24} color="var(--color-brand-blue)" /></span>
+            <span className="meta-icon">
+              <MapPin size={24} color="var(--color-brand-blue)" />
+            </span>
             <div>
               <h4>Venue Hub</h4>
               <p>{hero.venue}</p>
@@ -214,11 +303,19 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
           </div>
           <div className="transitional-info-card glass-card">
             <h4>Why Join OOSC 4.0?</h4>
-            <p>Connect with <strong>leading maintainers</strong>, explore <span className="text-highlight">high-throughput systems</span>, and participate in <strong>collaborative hackathons</strong> with academic guidance.</p>
+            <p>
+              Connect with <strong>leading maintainers</strong>, explore{" "}
+              <span className="text-highlight">high-throughput systems</span>,
+              and participate in <strong>collaborative hackathons</strong> with
+              academic guidance.
+            </p>
           </div>
           <div className="transitional-info-card glass-card highlight-border">
             <h4>Open Source &amp; Academia</h4>
-            <p>Access developer workshops, server labs, and code sprints designed specifically to bridge academia with modern platforms.</p>
+            <p>
+              Access developer workshops, server labs, and code sprints designed
+              specifically to bridge academia with modern platforms.
+            </p>
           </div>
         </div>
       </section>
@@ -228,15 +325,19 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
         <div className="about-grid">
           <div className="about-text-content">
             <div className="section-heading">
-              <span>{siteConfig.aboutEyebrow || 'OOSC Ecosystem'}</span>
+              <span>{siteConfig.aboutEyebrow || "OOSC Ecosystem"}</span>
               <h2>{siteConfig.aboutTitle || about.heading}</h2>
-              <p className="about-desc">{siteConfig.aboutSubtitle || about.description}</p>
+              <p className="about-desc">
+                {siteConfig.aboutSubtitle || about.description}
+              </p>
             </div>
 
             <div className="highlights-stack">
               {about.highlights.map((point, i) => (
                 <div key={i} className="highlight-pill glass-card">
-                  <span className="highlight-bullet"><Check size={16} color="var(--color-success)" /></span>
+                  <span className="highlight-bullet">
+                    <Check size={16} color="var(--color-success)" />
+                  </span>
                   <p>{point}</p>
                 </div>
               ))}
@@ -251,7 +352,7 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
             </div>
             <div className="stat-card-gradient">
               <h3>50+</h3>
-              <p>  Speakers &amp; Panelists</p>
+              <p> Speakers &amp; Panelists</p>
             </div>
             <div className="stat-card-gradient">
               <h3>10+</h3>
@@ -274,36 +375,73 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
         <div className="section-heading text-center">
           <span>Core Activities</span>
           <h2>Conference Focus Areas</h2>
-          <p className="subtitle">From research panels to <strong>coding sprints</strong>, explore the structural core of OOSC 4.0.</p>
+          <p className="subtitle">
+            From research panels to <strong>coding sprints</strong>, explore the
+            structural core of OOSC 4.0.
+          </p>
         </div>
         <div className="event-overview-grid">
           <div className="overview-card glass-card">
-            <span className="overview-icon"><Mic size={32} color="var(--color-brand-purple)" /></span>
+            <span className="overview-icon">
+              <Mic size={32} color="var(--color-brand-purple)" />
+            </span>
             <h3>Research Talks</h3>
-            <p>In-depth technical sessions on <strong>server design</strong>, kernel optimizations, and <strong>state-of-the-art databases</strong>.</p>
+            <p>
+              In-depth technical sessions on <strong>server design</strong>,
+              kernel optimizations, and{" "}
+              <strong>state-of-the-art databases</strong>.
+            </p>
           </div>
           <div className="overview-card glass-card">
-            <span className="overview-icon"><Settings size={32} color="var(--color-brand-slate)" /></span>
+            <span className="overview-icon">
+              <Settings size={32} color="var(--color-brand-slate)" />
+            </span>
             <h3>Workshops</h3>
-            <p>Interactive labs guiding developers through <strong>deployment orchestrations</strong>, <strong>API architectures</strong>, and systems diagnostics.</p>
+            <p>
+              Interactive labs guiding developers through{" "}
+              <strong>deployment orchestrations</strong>,{" "}
+              <strong>API architectures</strong>, and systems diagnostics.
+            </p>
           </div>
           <div className="overview-card glass-card">
-            <span className="overview-icon"><Zap size={32} color="var(--color-brand-yellow)" /></span>
+            <span className="overview-icon">
+              <Zap size={32} color="var(--color-brand-yellow)" />
+            </span>
             <h3>Hackathons</h3>
-            <p>A multi-hour <strong>competitive sprint</strong> solving high-priority systems issues with <span className="text-highlight">direct coordinator support</span>.</p>
+            <p>
+              A multi-hour <strong>competitive sprint</strong> solving
+              high-priority systems issues with{" "}
+              <span className="text-highlight">direct coordinator support</span>
+              .
+            </p>
           </div>
           <div className="overview-card glass-card">
-            <span className="overview-icon"><Handshake size={32} color="var(--color-success)" /></span>
+            <span className="overview-icon">
+              <Handshake size={32} color="var(--color-success)" />
+            </span>
             <h3>Networking Hub</h3>
-            <p>Build links between <strong>leading research faculties</strong>, <strong>open source contributors</strong>, and corporate engineering advocates.</p>
+            <p>
+              Build links between <strong>leading research faculties</strong>,{" "}
+              <strong>open source contributors</strong>, and corporate
+              engineering advocates.
+            </p>
           </div>
           <div className="overview-card glass-card">
-            <span className="overview-icon"><Globe size={32} color="var(--color-brand-blue)" /></span>
+            <span className="overview-icon">
+              <Globe size={32} color="var(--color-brand-blue)" />
+            </span>
             <h3>Code Sprints</h3>
-            <p>Directly push contributions to <strong>whitelisted repositories</strong> and explore <span className="text-highlight">open system governance protocols</span>.</p>
+            <p>
+              Directly push contributions to{" "}
+              <strong>whitelisted repositories</strong> and explore{" "}
+              <span className="text-highlight">
+                open system governance protocols
+              </span>
+              .
+            </p>
           </div>
         </div>
       </section>
     </>
-  )
+  );
 }
