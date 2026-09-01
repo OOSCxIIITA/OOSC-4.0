@@ -99,7 +99,8 @@ function CountdownTimer() {
     return (
       <div className="countdown-finished ">
         <PartyPopper size={40} className="pop" />
-        <div>The Conference has Started!</div>
+        <div>The Conference has Ended!</div>
+        <div>Thanks For Joining Us At OOSC 4.0 </div>
       </div>
     );
   }
