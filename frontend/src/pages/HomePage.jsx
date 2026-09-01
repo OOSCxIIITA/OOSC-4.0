@@ -100,6 +100,7 @@ function CountdownTimer() {
       <div className="countdown-finished ">
         <PartyPopper size={40} className="pop" />
         <div>The Conference has Ended!</div>
+        <br/>
         <div>Thanks For Joining Us At OOSC 4.0 </div>
       </div>
     );
@@ -276,6 +277,15 @@ export default function HomePage({ hero, about, siteConfig, navigateTo }) {
               >
                 Explore Key Speakers
               </button>
+              <a
+                href="https://www.flickr.com/photos/ams_iiita/albums/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+                style={{ textDecoration: 'none' }}
+              >
+                Captured Moments from OOSC 4.0
+              </a>
             </div>
           </div>
         </div>
