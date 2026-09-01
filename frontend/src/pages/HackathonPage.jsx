@@ -21,7 +21,7 @@ const HACKATHON_JUDGES = [
     id: 'rohan-rajpal',
     name: 'Rohan Rajpal',
     title: 'Co-Founder & CTO @ Spurtastic Technologies',
-    bio: 'Co-Founder and CTO @ Spurtastic Technologies, with experience in architecting AI systems and messaging infrastructure at scale.',
+    bio: 'Invited to join the judging panel in recognition of his technical depth and experience architecting AI systems and messaging infrastructure at scale.',
     linkedin: 'https://www.linkedin.com/in/rohanrajpal/',
     photoURL: 'https://media.licdn.com/dms/image/v2/D5603AQEKFJ1nH-a_0g/profile-displayphoto-crop_800_800/B56ZniLCuKHQAI-/0/1760436172062?e=1789603200&v=beta&t=xqoIIyMLwYkhWy3QT9zJh486W9eSFTRX65W7gt-Jh3g'
   },
@@ -29,7 +29,7 @@ const HACKATHON_JUDGES = [
     id: 'royal-tomar',
     name: 'Royal Tomar',
     title: 'Co-Founder & CEO @ Spurtastic Technologies',
-    bio: 'Co-Founder and CEO @ Spurtastic Technologies, with a track record of building and scaling a bootstrapped, profitable AI product company.',
+    bio: 'Invited to join the judging panel in recognition of his track record building and scaling a bootstrapped, profitable AI product company.',
     linkedin: 'https://www.linkedin.com/in/tomaroyal/',
     photoURL: 'https://media.licdn.com/dms/image/v2/D5603AQGIEGo1BPLQ_w/profile-displayphoto-crop_800_800/B56Z3KhgJYKgAM-/0/1777219280475?e=1789603200&v=beta&t=h0LmSDAg8zXtcims8yVDqRaHB-jB8nkLZpkG4bnYT3I'
   },
@@ -37,7 +37,7 @@ const HACKATHON_JUDGES = [
     id: 'vaibhav-agarwal',
     name: 'Vaibhav Agarwal',
     title: 'Chief AI Officer @ Siftly AI',
-    bio: 'Chief AI Officer @ Siftly AI with expertise in building and scaling AI-driven SaaS products.',
+    bio: 'Invited to join the judging panel in recognition of his extensive industry experience and expertise in building, leading and scaling AI-driven SaaS products.',
     linkedin: 'https://www.linkedin.com/in/mrvaibhav98/',
     photoURL: 'https://media.licdn.com/dms/image/v2/D4D03AQFcDztwjt4fxA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1666251867989?e=1789603200&v=beta&t=pQzkGquaAehQFK3aLdWCO8_2B2XzPrfCGOrECgkSxRI'
   }
